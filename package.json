@@ -24,6 +24,6 @@
     "node-emoji": "^1.5.1",
     "react": "~15.4.0",
     "react-native": "0.42.3",
-    "react-native-navbar": "^1.7.1"
+    "react-navigation": "^1.0.0-beta.7"
   }
 }
