@@ -26,6 +26,7 @@
     "react": "~15.4.0",
     "react-native": "0.42.3",
     "react-native-elements": "^0.11.2",
+    "react-native-keyboard-aware-scroll-view": "^0.2.8",
     "react-navigation": "^1.0.0-beta.7",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0"
