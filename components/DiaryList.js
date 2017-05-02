@@ -3,17 +3,25 @@ import { Text, ListView, View, Image, TouchableHighlight, Dimensions } from 'rea
 import nodeEmoji from 'node-emoji';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+import { Constants } from 'expo'
+import headerStyle from './headerStyle.js'
 
 class DiaryList extends Component {
   static navigationOptions = {
+    title: '日記',
     header: {
-      title: <Text style={{ color: 'mediumseagreen', fontWeight: 'bold', fontSize: 18 }}>FamiLog</Text>,
-      style: {
-        marginBottom: 0,
-        backgroundColor: 'white', borderStyle: 'solid',
-        borderBottomColor: 'limegreen', borderBottomWidth: 0.5,
-      }
+      title: <Text style={headerStyle.title}>FamiLog</Text>,
+      style: headerStyle.container,
     },
+    tabBar: {
+      icon:  ({ tintColor }) => (
+        <Icon
+          name='book-open-page-variant'
+          type='material-community'
+          color={tintColor}
+        />
+      )
+    }
   };
 
   constructor() {
@@ -21,7 +29,13 @@ class DiaryList extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+      containerWidth: Dimensions.get('window').width
     };
+    this.onLayout = this.onLayout.bind(this)
+  }
+
+  onLayout(event) {
+    this.setState({ width: Dimensions.get('window').width })
   }
 
   render() {
@@ -66,7 +80,7 @@ class DiaryList extends Component {
       </TouchableHighlight>
     )
     return (
-      <View style={{ width: Dimensions.get('window').width, flex: 1 }}>
+      <View style={{ width: Dimensions.get('window').width, flex: 1 }} onLayout={this.onLayout}>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={_renderRow}

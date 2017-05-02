@@ -10,7 +10,7 @@ export default class Field extends React.Component {
   handleScrollPoint
 
   render() {
-    const { fieldValue, onChange, label, multiline } = this.props
+    const { fieldValue, onChange, label, multiline, placeholder } = this.props
     const inputStyle = multiline ? styles.multiline : styles.input
     const minContentHeight = multiline ? 200 : 40
     const returnKey = multiline ? 'default' : 'done'
@@ -27,7 +27,7 @@ export default class Field extends React.Component {
             this.setState({height: event.nativeEvent.contentSize.height});
           }}
           value={fieldValue}
-          placeholder="X月X日 ◯◯◯"
+          placeholder={placeholder}
           multiline={multiline}
         />
       </View>
@@ -59,5 +59,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 5,
     fontSize: 16,
+    textAlignVertical: 'top',
   }
 })
