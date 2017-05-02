@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TextInput, ListView, Button, View, Image, StyleSheet } from 'react-native';
+import { Text, TextInput, ListView, Button, View, Image, StyleSheet, Platform } from 'react-native';
 
 export default class Field extends React.Component {
   constructor(props) {
@@ -47,18 +47,30 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: 'white',
-    borderColor: 'mediumseagreen',
-    borderWidth: 1,
     height: 40,
     padding: 5,
     fontSize: 16,
+    ...Platform.select({
+      ios: {
+        borderColor: 'mediumseagreen',
+        borderWidth: 1,
+      },
+      android: {
+      },
+    }),
   },
   multiline: {
     backgroundColor: 'white',
-    borderColor: 'mediumseagreen',
-    borderWidth: 1,
     padding: 5,
     fontSize: 16,
-    textAlignVertical: 'top',
+    ...Platform.select({
+      ios: {
+        borderColor: 'mediumseagreen',
+        borderWidth: 1,
+      },
+      android: {
+        textAlignVertical: 'top',
+      },
+    }),
   }
 })

@@ -9,19 +9,15 @@ import headerStyle from './headerStyle.js'
 class DiaryList extends Component {
   static navigationOptions = {
     title: '日記',
-    header: {
-      title: <Text style={headerStyle.title}>FamiLog</Text>,
-      style: headerStyle.container,
-    },
-    tabBar: {
-      icon:  ({ tintColor }) => (
-        <Icon
-          name='book-open-page-variant'
-          type='material-community'
-          color={tintColor}
-        />
-      )
-    }
+    headerTitle: <Text style={headerStyle.title}>FamiLog</Text>,
+    headerStyle: headerStyle.container,
+    tabBarIcon:  ({ tintColor }) => (
+      <Icon
+        name='book-open-page-variant'
+        type='material-community'
+        color={tintColor}
+      />
+    )
   };
 
   constructor() {
