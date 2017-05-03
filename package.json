@@ -20,9 +20,11 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "crypto-browserify": "^3.11.0",
     "expo": "^16.0.0",
     "flow-bin": "0.45.0",
     "node-emoji": "^1.5.1",
+    "node-uuid": "^1.4.8",
     "react": "16.0.0-alpha.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-16.0.0.tar.gz",
     "react-native-elements": "^0.11.2",
@@ -30,6 +32,7 @@
     "react-native-keyboard-aware-scrollview": "^1.1.6",
     "react-navigation": "^1.0.0-beta.7",
     "react-redux": "^5.0.4",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.1"
   }
 }
