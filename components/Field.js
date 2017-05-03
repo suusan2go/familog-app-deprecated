@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react'
 import { Text, TextInput, ListView, Button, View, Image, StyleSheet, Platform } from 'react-native';
+import FieldContainer from './FieldContainer.js'
 
 export default class Field extends React.Component {
   state: {
@@ -30,13 +31,10 @@ export default class Field extends React.Component {
     const minContentHeight = multiline ? 200 : 40
     const returnKey = multiline ? 'default' : 'done'
     return (
-      <View style={styles.labelContainer}>
-        <View style={styles.label}>
-          <Text>{label}</Text>
-        </View>
+      <FieldContainer label={label}>
         <TextInput
           returnKeyType={returnKey}
-          blurOnSubmit={false}
+          blurOnSubmit={!multiline}
           style={[inputStyle, {height: Math.max(minContentHeight, this.state.height)}]}
           onChangeText={onChange}
           onSubmitEditing={this.handleSubmitEditing.bind(this)}
@@ -52,7 +50,7 @@ export default class Field extends React.Component {
           placeholder={placeholder}
           multiline={multiline}
         />
-      </View>
+      </FieldContainer>
     );
   }
 }

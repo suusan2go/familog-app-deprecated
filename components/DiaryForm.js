@@ -6,6 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview'
 import { Button } from 'react-native-elements'
 import { Icon } from 'react-native-elements'
 import Field from './Field.js'
+import FieldContainer from './FieldContainer.js'
 import ImageField from './FieldImage.js'
 import headerStyle from './headerStyle.js'
 
@@ -27,7 +28,7 @@ export default class DiaryForm extends React.Component {
       name='times' type='font-awesome'
       containerStyle={{ padding: 10 }}
       onPress={() => navigation.goBack()}
-    />
+                />
   });
 
   render(){
@@ -40,11 +41,19 @@ export default class DiaryForm extends React.Component {
           onChange={(text) => this.setState({body: text})}
           multiline={true}
         />
-        <ImageField/>
-        <Button
-          title='BUTTON'
-          backgroundColor="limegreen"
-        />
+        <FieldContainer label="今日の一枚">
+          <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row'}}>
+            <ImageField/>
+            <ImageField/>
+            <ImageField/>
+          </View>
+        </FieldContainer>
+        <View style={{ paddingVertical: 40 }} >
+          <Button
+            title='保存する'
+            backgroundColor="limegreen"
+          />
+        </View>
       </KeyboardAwareScrollView>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Image, View } from 'react-native';
+import { Icon } from 'react-native-elements';
+import { Button, Image, View, TouchableHighlight } from 'react-native';
 import { ImagePicker } from 'expo';
 
 export default class FieldImage extends React.Component {
@@ -11,14 +12,16 @@ export default class FieldImage extends React.Component {
     let { image } = this.state;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          title="Pick an image from camera roll"
-          onPress={this._pickImage}
-        />
-        {image &&
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-      </View>
+      <TouchableHighlight style={{ flex: 1, margin: 10 }} onPress={this._pickImage} >
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'lightgrey', height: 100}}>
+          {image ?
+            <Image source={{ uri: image }} style={{ flex: 1, minWidth: 100, height: 100 }} /> :
+            <Icon
+              name="image"
+            />
+          }
+        </View>
+      </TouchableHighlight>
     );
   }
 
@@ -27,9 +30,6 @@ export default class FieldImage extends React.Component {
       allowsEditing: true,
       aspect: [4, 3],
     });
-
-    console.log(result);
-
     if (!result.cancelled) {
       this.setState({ image: result.uri });
     }
