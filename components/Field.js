@@ -1,13 +1,28 @@
+/* @flow */
 import React from 'react'
 import { Text, TextInput, ListView, Button, View, Image, StyleSheet, Platform } from 'react-native';
 
 export default class Field extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { height: 0 };
+  state: {
+    height: number,
+    isSubmit: bool,
   }
 
-  handleScrollPoint
+  constructor(props: any) {
+    super(props);
+    this.state = { height: 0, isSubmit: false };
+  }
+
+  // https://gist.github.com/BCGen/9ba9f7d96459fd063e42bd53f9839217
+  // on android onSubmitEditing trigger twice, not test on ios.
+  handleSubmitEditing(event: Event) {
+    const { onChange, onSubmitEditing, fieldValue } = this.props;
+
+    if (!this.state.isSubmit) {
+      onChange(fieldValue + "\n");
+    }
+    this.setState({ isSubmit: !this.state.isSubmit });
+  }
 
   render() {
     const { fieldValue, onChange, label, multiline, placeholder } = this.props
@@ -21,8 +36,15 @@ export default class Field extends React.Component {
         </View>
         <TextInput
           returnKeyType={returnKey}
+          blurOnSubmit={false}
           style={[inputStyle, {height: Math.max(minContentHeight, this.state.height)}]}
           onChangeText={onChange}
+          onSubmitEditing={this.handleSubmitEditing.bind(this)}
+          onChange={(event) => {
+            if (Platform.OS === 'android') {
+              this.setState({height: event.nativeEvent.contentSize.height});
+            }
+          }}
           onContentSizeChange={(event) => {
             this.setState({height: event.nativeEvent.contentSize.height});
           }}
