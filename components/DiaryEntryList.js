@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import nodeEmoji from 'node-emoji';
 import { StackNavigator } from 'react-navigation';
-import { Icon } from 'react-native-elements';
+import { Icon, Button } from 'react-native-elements';
 import { Constants } from 'expo';
 import headerStyle from './headerStyle.js';
 
@@ -124,6 +124,18 @@ class DiaryEntryList extends Component {
         style={{ width: Dimensions.get('window').width, flex: 1 }}
         onLayout={this.onLayout}
       >
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <Button
+            large
+            iconLeft
+            backgroundColor="mediumseagreen"
+            icon={{
+              name: 'book-open-page-variant',
+              type: 'material-community',
+            }}
+            title="日記を始める"
+          />
+        </View>
         {currentDiary !== null &&
           <View style={{ flex: 1 }}>
             <ListView
