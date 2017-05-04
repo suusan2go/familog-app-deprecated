@@ -1,5 +1,6 @@
 {
   "expo": {
+    "name": "familog",
     "sdkVersion": "16.0.0"
   }
 }
