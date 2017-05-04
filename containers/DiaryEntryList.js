@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { AsyncStorage } from 'react-native';
 import DiaryEntryList from '../components/DiaryEntryList.js';
-import * as Api from '../api';
 import * as Actions from '../actions';
 
 const DEVICE_TOKEN_KEY = '@DeviceToken:key';

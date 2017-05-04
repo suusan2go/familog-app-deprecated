@@ -133,6 +133,7 @@ class DiaryEntryList extends Component {
               name: 'book-open-page-variant',
               type: 'material-community',
             }}
+            onPress={() => navigate('DiaryForm')}
             title="日記を始める"
           />
         </View>

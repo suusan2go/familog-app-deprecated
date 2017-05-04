@@ -1,13 +1,22 @@
 /* @flow */
-import React from 'react'
-import { Text, TextInput, ListView, Button, View, Image, StyleSheet, Platform } from 'react-native';
-import FieldContainer from './FieldContainer.js'
+import React from 'react';
+import {
+  Text,
+  TextInput,
+  ListView,
+  Button,
+  View,
+  Image,
+  StyleSheet,
+  Platform,
+} from 'react-native';
+import FieldContainer from './FieldContainer.js';
 
 export default class Field extends React.Component {
   state: {
     height: number,
-    isSubmit: bool,
-  }
+    isSubmit: boolean,
+  };
 
   constructor(props: any) {
     super(props);
@@ -20,31 +29,42 @@ export default class Field extends React.Component {
     const { onChange, onSubmitEditing, fieldValue } = this.props;
 
     if (!this.state.isSubmit) {
-      onChange(fieldValue + "\n");
+      onChange(fieldValue + '\n');
     }
     this.setState({ isSubmit: !this.state.isSubmit });
   }
 
   render() {
-    const { fieldValue, onChange, label, multiline, placeholder } = this.props
-    const inputStyle = multiline ? styles.multiline : styles.input
-    const minContentHeight = multiline ? 200 : 40
-    const returnKey = multiline ? 'default' : 'done'
+    const {
+      fieldValue,
+      onChange,
+      label,
+      multiline,
+      placeholder,
+      fieldName,
+    } = this.props;
+    const inputStyle = multiline ? styles.multiline : styles.input;
+    const minContentHeight = multiline ? 200 : 40;
+    const returnKey = multiline ? 'default' : 'done';
     return (
       <FieldContainer label={label}>
         <TextInput
+          fieldName={fieldName}
           returnKeyType={returnKey}
           blurOnSubmit={!multiline}
-          style={[inputStyle, {height: Math.max(minContentHeight, this.state.height)}]}
+          style={[
+            inputStyle,
+            { height: Math.max(minContentHeight, this.state.height) },
+          ]}
           onChangeText={onChange}
           onSubmitEditing={this.handleSubmitEditing.bind(this)}
-          onChange={(event) => {
+          onChange={event => {
             if (Platform.OS === 'android') {
-              this.setState({height: event.nativeEvent.contentSize.height});
+              this.setState({ height: event.nativeEvent.contentSize.height });
             }
           }}
-          onContentSizeChange={(event) => {
-            this.setState({height: event.nativeEvent.contentSize.height});
+          onContentSizeChange={event => {
+            this.setState({ height: event.nativeEvent.contentSize.height });
           }}
           value={fieldValue}
           placeholder={placeholder}
@@ -75,8 +95,7 @@ const styles = StyleSheet.create({
         borderColor: 'mediumseagreen',
         borderWidth: 1,
       },
-      android: {
-      },
+      android: {},
     }),
   },
   multiline: {
@@ -92,5 +111,5 @@ const styles = StyleSheet.create({
         textAlignVertical: 'top',
       },
     }),
-  }
-})
+  },
+});
