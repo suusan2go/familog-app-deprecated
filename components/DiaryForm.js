@@ -39,6 +39,19 @@ export default class DiaryForm extends React.Component {
     ),
   });
 
+  handleSubmit(): void {
+    this.props.actions.createDiary({
+      title: this.props.diaryForm.title,
+    });
+  }
+
+  isDisabled(): boolean {
+    return (
+      this.props.diaryForm.isSubmitting ||
+      this.props.diaryForm.title.length === 0
+    );
+  }
+
   render() {
     return (
       <View>
@@ -51,7 +64,8 @@ export default class DiaryForm extends React.Component {
           <Button
             title="日記を始める"
             backgroundColor="mediumseagreen"
-            onPress={this.props.actions.createDiary}
+            disabled={this.isDisabled()}
+            onPress={this.handleSubmit.bind(this)}
           />
         </View>
       </View>

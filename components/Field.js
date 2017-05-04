@@ -26,6 +26,7 @@ export default class Field extends React.Component {
   // https://gist.github.com/BCGen/9ba9f7d96459fd063e42bd53f9839217
   // on android onSubmitEditing trigger twice, not test on ios.
   handleSubmitEditing(event: Event) {
+    if (!this.props.multiline) return;
     const { onChange, onSubmitEditing, fieldValue } = this.props;
 
     if (!this.state.isSubmit) {

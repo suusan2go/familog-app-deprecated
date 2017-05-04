@@ -124,19 +124,20 @@ class DiaryEntryList extends Component {
         style={{ width: Dimensions.get('window').width, flex: 1 }}
         onLayout={this.onLayout}
       >
-        <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Button
-            large
-            iconLeft
-            backgroundColor="mediumseagreen"
-            icon={{
-              name: 'book-open-page-variant',
-              type: 'material-community',
-            }}
-            onPress={() => navigate('DiaryForm')}
-            title="日記を始める"
-          />
-        </View>
+        {currentDiary === null &&
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <Button
+              large
+              iconLeft
+              backgroundColor="mediumseagreen"
+              icon={{
+                name: 'book-open-page-variant',
+                type: 'material-community',
+              }}
+              onPress={() => navigate('DiaryForm')}
+              title="日記を始める"
+            />
+          </View>}
         {currentDiary !== null &&
           <View style={{ flex: 1 }}>
             <ListView
