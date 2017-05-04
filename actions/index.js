@@ -28,6 +28,6 @@ export type SetSessionTokenAction = {
 export const setSessionToken = (
   sessionToken: string
 ): SetSessionTokenAction => ({
-  type: SET_DEVICE_TOKEN,
+  type: SET_SESSION_TOKEN,
   payload: sessionToken,
 });
