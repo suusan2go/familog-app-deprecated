@@ -24,3 +24,6 @@ rules:
       trailingComma: true
       singleQuote: true
       semi: true
+settings:
+  import/ignore:
+    - node_modules

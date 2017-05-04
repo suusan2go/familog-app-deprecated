@@ -1,12 +1,12 @@
 import { TabNavigator } from 'react-navigation';
 import Diary from './Diary.js';
-import DiaryList from './DiaryList.js';
-import DiaryForm from './DiaryForm.js';
+import DiaryEntryList from '../containers/DiaryEntryList.js';
+import DiaryEntryForm from './DiaryEntryForm.js';
 
 const HomeScreen = TabNavigator(
   {
     DiaryList: {
-      screen: DiaryList,
+      screen: DiaryEntryList,
     },
   },
   {

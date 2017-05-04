@@ -1,16 +1,16 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import Diary from './Diary.js';
-import DiaryForm from './DiaryForm.js';
+import DiaryEntryForm from './DiaryEntryForm.js';
 import HomeScreen from './HomeScreen.js';
 
 const MainScreen = StackNavigator({
   Home: { screen: HomeScreen },
-  Diary: {
+  DiaryEntryList: {
     screen: Diary,
   },
-  DiaryForm: {
-    screen: DiaryForm,
+  DiaryEntryForm: {
+    screen: DiaryEntryForm,
   },
 });
 
