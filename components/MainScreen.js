@@ -22,12 +22,12 @@ export default class MainScreenApp extends React.Component {
   props: {
     deviceToken: string,
     actions: {
-      setUpDeviceTokenAndSessionToken: Action,
+      setupApp: Action,
     },
   };
 
   componentWillMount() {
-    this.props.actions.setUpDeviceTokenAndSessionToken();
+    this.props.actions.setupApp();
   }
 
   render() {

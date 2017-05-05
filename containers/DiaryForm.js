@@ -12,7 +12,7 @@ export default connect(
   (dispatch: Dispatch<ReduxAction>) => ({
     actions: {
       createDiary: async () => {
-        const Api = new ApiClient(store.sessionToken);
+        const Api = new ApiClient(store.getState().sessionToken);
         const diaryForm = store.getState().diaryForm;
         dispatch(Actions.createDiaryStart());
         try {

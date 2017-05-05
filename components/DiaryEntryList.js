@@ -55,7 +55,6 @@ class DiaryEntryList extends Component {
 
   render() {
     const { navigation: { navigate }, currentDiary } = this.props;
-    console.log(this.props);
     const _renderRow = rowData => (
       <TouchableHighlight
         underlayColor="lightgrey"

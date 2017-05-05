@@ -1,6 +1,7 @@
 /* @flow */
 import * as url from './url.js';
 import uuid from 'uuid';
+import qs from 'qs';
 
 export default class ApiClient {
   sessionToken: string | null;
@@ -24,7 +25,13 @@ export default class ApiClient {
   }
 
   async createDiary({ title }: { title: string }) {
-    const response: Response = await this.post(url.SESSION_URL, { title });
+    const response: Response = await this.post(url.DIARIES_URL, { title });
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
+  async getDiaries() {
+    const response: Response = await this.get(url.DIARIES_URL);
     const responseJson = await response.json();
     return responseJson;
   }
@@ -38,6 +45,20 @@ export default class ApiClient {
         Authorization: this.sessionToken,
       },
       body: JSON.stringify(body),
+    });
+  }
+
+  get(url: string, queryParams?: any) {
+    const urlWithQueryString = queryParams
+      ? `${url}?${qs.stringify(queryParams)}`
+      : url;
+    return fetch(urlWithQueryString, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: this.sessionToken,
+      },
     });
   }
 }
