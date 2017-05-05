@@ -2,7 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import Diary from './Diary.js';
 import DiaryForm from '../containers/DiaryForm.js';
-import DiaryEntryForm from './DiaryEntryForm.js';
+import DiaryEntryForm from '../containers/DiaryEntryForm.js';
 import HomeScreen from './HomeScreen.js';
 
 const MainScreen = StackNavigator({

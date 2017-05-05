@@ -20,17 +20,14 @@ import Field from './Field.js';
 import FieldContainer from './FieldContainer.js';
 import ImageField from './FieldImage.js';
 import headerStyle from './headerStyle.js';
+import type { DiaryEntryFormState } from '../reducers/diaryEntryForm';
+import type { DiaryEntryFormActions } from '../containers/DiaryEntryForm';
 
 export default class DiaryEntryForm extends React.Component {
-  state: {
-    title: string,
-    body: string,
+  props: {
+    diaryEntryForm: DiaryEntryFormState,
+    actions: DiaryEntryFormActions,
   };
-
-  constructor(props: any) {
-    super(props);
-    this.state = { title: '', body: '' };
-  }
 
   static navigationOptions = ({ navigation }) => ({
     headerTitle: <Text style={headerStyle.title}>日記を書く</Text>,
@@ -50,13 +47,13 @@ export default class DiaryEntryForm extends React.Component {
       <KeyboardAwareScrollView>
         <Field
           label="タイトル"
-          fieldValue={this.state.title}
-          onChange={text => this.setState({ title: text })}
+          fieldValue={this.props.diaryEntryForm.title}
+          onChange={this.props.actions.handleChangeTitle}
         />
         <Field
           label="本文"
-          fieldValue={this.state.body}
-          onChange={text => this.setState({ body: text })}
+          fieldValue={this.props.diaryEntryForm.body}
+          onChange={this.props.actions.handleChangeBody}
           multiline={true}
         />
         <FieldContainer label="今日の一枚">

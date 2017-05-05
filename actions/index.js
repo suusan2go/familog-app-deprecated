@@ -82,3 +82,44 @@ export const handleChangeDiary = (payload: {
   type: HANDLE_CHANGE_DIARY,
   payload: payload,
 });
+
+export const CREATE_DIARY_ENTRY_START = 'CREATE_DIARY_ENTRY_START';
+export type CreateDiaryEntryStartAction = {
+  type: typeof CREATE_DIARY_ENTRY_START,
+};
+export const createDiaryEntryStart = (): CreateDiaryEntryStartAction => ({
+  type: CREATE_DIARY_START,
+});
+
+export const CREATE_DIARY_ENTRY_SUCCESS = 'CREATE_DIARY_ENTRY_SUCCESS';
+export type CreateDiaryEntrySuccessAction = {
+  type: typeof CREATE_DIARY_ENTRY_SUCCESS,
+};
+export const createDiaryEntrySuccess = (): CreateDiarySuccessAction => ({
+  type: CREATE_DIARY_SUCCESS,
+});
+
+export const CREATE_DIARY_ENTRY_FAILURE = 'CREATE_DIARY_FAILURE';
+export type CreateDiaryEntryFailureAction = {
+  type: typeof CREATE_DIARY_ENTRY_FAILURE,
+};
+export const createDiaryEntryFailure = (): CreateDiaryEntryFailureAction => ({
+  type: CREATE_DIARY_ENTRY_FAILURE,
+});
+
+export const HANDLE_CHANGE_DIARY_ENTRY = 'HANDLE_CHANGE_DIARY_ENTRY';
+export type HandleChangeDiaryEntryAction = {
+  type: typeof HANDLE_CHANGE_DIARY_ENTRY,
+  payload: any,
+};
+export const handleChangeDiaryEntry = (payload: {|
+  title?: string,
+  body?: string,
+  emoji?: string,
+  image1?: string,
+  image2?: string,
+  image3?: string,
+|}): HandleChangeDiaryEntryAction => ({
+  type: HANDLE_CHANGE_DIARY_ENTRY,
+  payload: payload,
+});
