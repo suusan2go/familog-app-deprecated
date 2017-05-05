@@ -2,6 +2,7 @@
 import * as url from './url.js';
 import uuid from 'uuid';
 import qs from 'qs';
+import type { DiaryEntryFormState } from '../reducers/diaryEntryForm';
 
 export default class ApiClient {
   sessionToken: ?string;
@@ -36,6 +37,15 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async createDiaryEntry(body: DiaryEntryFormState, diaryID: number) {
+    const response: Response = await this.postWithFile(
+      url.POST_DIARY_ENTRIES_URL(diaryID),
+      body,
+    );
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',
@@ -45,6 +55,22 @@ export default class ApiClient {
         Authorization: this.sessionToken,
       },
       body: JSON.stringify(body),
+    });
+  }
+
+  postWithFile(url: string, body: any) {
+    const formData = new FormData();
+    for (let name in body) {
+      formData.append(name, body[name]);
+    }
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
+        Authorization: this.sessionToken,
+      },
+      body: formData,
     });
   }
 

@@ -18,9 +18,21 @@ export type DiaryEntryFormActions = {
   handleChangeTitle: (title: string) => void,
   handleChangeBody: (body: string) => void,
   handleChangeEmoji: (emoji: string) => void,
-  handleChangeImage1: (image1: string) => void,
-  handleChangeImage2: (image2: string) => void,
-  handleChangeImage3: (image3: string) => void,
+  handleChangeImage1: (image1: {
+    uri: string,
+    name: string,
+    type: string,
+  }) => void,
+  handleChangeImage2: (image2: {
+    uri: string,
+    name: string,
+    type: string,
+  }) => void,
+  handleChangeImage3: (image3: {
+    uri: string,
+    name: string,
+    type: string,
+  }) => void,
 };
 
 export default connect(
@@ -29,17 +41,20 @@ export default connect(
   }),
   (
     dispatch: Dispatch,
-    ownProps: navigationProps
+    ownProps: navigationProps,
   ): { actions: DiaryEntryFormActions } => ({
     actions: {
       createDiaryEntry: async () => {
         const Api = new ApiClient(store.getState().sessionToken);
         const diaryEntryForm = store.getState().diaryEntryForm;
+        const currentDiary = store.getState().currentDiary;
         dispatch(Actions.createDiaryEntryStart());
         try {
-          const diary = await Api.createDiary(diaryEntryForm);
+          const diaryEntry = await Api.createDiaryEntry(
+            diaryEntryForm,
+            currentDiary.id,
+          );
           dispatch(Actions.createDiaryEntrySuccess());
-          ownProps.navigation.navigate('DiaryEntryList');
         } catch (error) {
           dispatch(Actions.createDiaryEntryFailure());
         }
@@ -63,5 +78,5 @@ export default connect(
         dispatch(Actions.handleChangeDiaryEntry({ image3 }));
       },
     },
-  })
+  }),
 )(DiaryEntryForm);

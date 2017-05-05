@@ -10,33 +10,47 @@ export type DiaryEntryFormState = {
   title: string,
   body: string,
   emoji: string,
-  image1: ?string,
-  image2: ?string,
-  image3: ?string,
+  image1: ?{
+    uri: string,
+    name: string,
+    type: string,
+  },
+  image2: ?{
+    uri: string,
+    name: string,
+    type: string,
+  },
+  image3: ?{
+    uri: string,
+    name: string,
+    type: string,
+  },
   isSubmitting: boolean,
+};
+
+const initialState = {
+  title: '',
+  body: '',
+  emoji: '',
+  image1: null,
+  image2: null,
+  image3: null,
+  isSubmitting: false,
 };
 
 // reducer
 export default (
-  state: DiaryEntryFormState = {
-    title: '',
-    body: '',
-    emoji: '',
-    image1: null,
-    image2: null,
-    image3: null,
-    isSubmitting: false,
-  },
+  state: DiaryEntryFormState = initialState,
   action:
     | CreateDiaryEntryStartAction
     | CreateDiaryEntrySuccessAction
-    | CreateDiaryEntryFailureAction
+    | CreateDiaryEntryFailureAction,
 ) => {
   switch (action.type) {
     case Actions.CREATE_DIARY_ENTRY_START:
       return Object.assign({}, state, { isSubmitting: true });
     case Actions.CREATE_DIARY_ENTRY_SUCCESS:
-      return Object.assign({}, state, { title: '', isSubmitting: false });
+      return initialState;
     case Actions.CREATE_DIARY_ENTRY_FAILURE:
       return Object.assign({}, state, { isSubmitting: false });
     case Actions.HANDLE_CHANGE_DIARY_ENTRY:

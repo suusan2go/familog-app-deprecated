@@ -61,21 +61,34 @@ export default class DiaryEntryForm extends React.Component {
             style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}
           >
             <ImageField
-              imageUrl={this.props.diaryEntryForm.image1}
+              imageUrl={
+                this.props.diaryEntryForm.image1 &&
+                  this.props.diaryEntryForm.image1.uri
+              }
               onChange={this.props.actions.handleChangeImage1}
             />
             <ImageField
-              imageUrl={this.props.diaryEntryForm.image2}
+              imageUrl={
+                this.props.diaryEntryForm.image2 &&
+                  this.props.diaryEntryForm.image2.uri
+              }
               onChange={this.props.actions.handleChangeImage2}
             />
             <ImageField
-              imageUrl={this.props.diaryEntryForm.image3}
+              imageUrl={
+                this.props.diaryEntryForm.image3 &&
+                  this.props.diaryEntryForm.image3.uri
+              }
               onChange={this.props.actions.handleChangeImage3}
             />
           </View>
         </FieldContainer>
         <View style={{ paddingVertical: 40 }}>
-          <Button title="保存する" backgroundColor="limegreen" />
+          <Button
+            title="保存する"
+            backgroundColor="limegreen"
+            onPress={this.props.actions.createDiaryEntry}
+          />
         </View>
       </KeyboardAwareScrollView>
     );

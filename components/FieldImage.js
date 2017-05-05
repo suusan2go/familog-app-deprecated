@@ -7,7 +7,11 @@ import { ImagePicker } from 'expo';
 export default class FieldImage extends React.Component {
   props: {
     imageUrl: ?string,
-    onChange: (imageUrl: string) => void,
+    onChange: (imageParams: {
+      uri: string,
+      name: string,
+      type: string,
+    }) => void,
   };
 
   render() {
@@ -45,7 +49,13 @@ export default class FieldImage extends React.Component {
       aspect: [4, 3],
     });
     if (!result.cancelled) {
-      this.props.onChange(result.uri);
+      const uriParts = result.uri.split('.');
+      const fileType = uriParts[uriParts.length - 1];
+      this.props.onChange({
+        uri: result.uri,
+        name: `file.${fileType}`,
+        type: `image/${fileType}`,
+      });
     }
   };
 }

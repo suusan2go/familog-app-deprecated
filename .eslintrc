@@ -21,7 +21,7 @@ rules:
   prettier/prettier:
     - 2
     -
-      trailingComma: true
+      trailingComma: all
       singleQuote: true
       semi: true
 settings:

@@ -6,3 +6,5 @@ const HOST = process.env.NODE_ENV === 'development'
 export const DEVICE_URL: string = `${HOST}/device`;
 export const SESSION_URL: string = `${HOST}/session`;
 export const DIARIES_URL: string = `${HOST}/diaries`;
+export const POST_DIARY_ENTRIES_URL: string = (diaryID: number) =>
+  `${HOST}/diaries/${diaryID}/diary_entries`;

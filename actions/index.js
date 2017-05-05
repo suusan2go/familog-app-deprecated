@@ -25,7 +25,7 @@ export type SetSessionTokenAction = {
   payload: string,
 };
 export const setSessionToken = (
-  sessionToken: string
+  sessionToken: string,
 ): SetSessionTokenAction => ({
   type: SET_SESSION_TOKEN,
   payload: sessionToken,
@@ -88,7 +88,7 @@ export type CreateDiaryEntryStartAction = {
   type: typeof CREATE_DIARY_ENTRY_START,
 };
 export const createDiaryEntryStart = (): CreateDiaryEntryStartAction => ({
-  type: CREATE_DIARY_START,
+  type: CREATE_DIARY_ENTRY_START,
 });
 
 export const CREATE_DIARY_ENTRY_SUCCESS = 'CREATE_DIARY_ENTRY_SUCCESS';
@@ -96,7 +96,7 @@ export type CreateDiaryEntrySuccessAction = {
   type: typeof CREATE_DIARY_ENTRY_SUCCESS,
 };
 export const createDiaryEntrySuccess = (): CreateDiarySuccessAction => ({
-  type: CREATE_DIARY_SUCCESS,
+  type: CREATE_DIARY_ENTRY_SUCCESS,
 });
 
 export const CREATE_DIARY_ENTRY_FAILURE = 'CREATE_DIARY_FAILURE';
@@ -116,9 +116,9 @@ export const handleChangeDiaryEntry = (payload: {|
   title?: string,
   body?: string,
   emoji?: string,
-  image1?: string,
-  image2?: string,
-  image3?: string,
+  image1?: { uri: string, name: string, type: string },
+  image2?: { uri: string, name: string, type: string },
+  image3?: { uri: string, name: string, type: string },
 |}): HandleChangeDiaryEntryAction => ({
   type: HANDLE_CHANGE_DIARY_ENTRY,
   payload: payload,
