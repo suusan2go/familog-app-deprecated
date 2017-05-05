@@ -10,7 +10,7 @@ const MainScreen = StackNavigator({
   DiaryForm: {
     screen: DiaryForm,
   },
-  DiaryEntryList: {
+  DiaryEntry: {
     screen: Diary,
   },
   DiaryEntryForm: {

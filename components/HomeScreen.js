@@ -5,7 +5,7 @@ import DiaryEntryForm from './DiaryEntryForm.js';
 
 const HomeScreen = TabNavigator(
   {
-    DiaryList: {
+    DiaryEntryList: {
       screen: DiaryEntryList,
     },
   },
