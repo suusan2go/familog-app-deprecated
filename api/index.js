@@ -4,8 +4,8 @@ import uuid from 'uuid';
 import qs from 'qs';
 
 export default class ApiClient {
-  sessionToken: string | null;
-  constructor(sessionToken: string | null) {
+  sessionToken: ?string;
+  constructor(sessionToken: ?string) {
     this.sessionToken = sessionToken;
   }
 

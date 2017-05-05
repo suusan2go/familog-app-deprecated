@@ -1,12 +1,23 @@
+/* @flow */
 import * as Actions from '../actions';
+import type {
+  CreateDiaryStartAction,
+  CreateDiarySuccessAction,
+  CreateDiaryFailureAction,
+} from '../actions';
+
+export type DiaryFormState = { title: string, isSubmitting: boolean };
 
 // reducer
 export default (
-  state: { title: string, isSubmitting: boolean } = {
+  state: DiaryFormState = {
     title: '',
     isSubmitting: false,
   },
-  action: Actions.createDiaryStart | Actions.createDiarySuccess
+  action:
+    | CreateDiaryStartAction
+    | CreateDiarySuccessAction
+    | CreateDiaryFailureAction
 ) => {
   switch (action.type) {
     case Actions.CREATE_DIARY_START:

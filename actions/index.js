@@ -43,10 +43,7 @@ export const CREATE_DIARY_SUCCESS = 'CREATE_DIARY_SUCCESS';
 export type CreateDiarySuccessAction = {
   type: typeof CREATE_DIARY_SUCCESS,
 };
-export const createDiarySuccess = (body: {
-  id: number,
-  title: string,
-}): CreateDiarySuccessAction => ({
+export const createDiarySuccess = (): CreateDiarySuccessAction => ({
   type: CREATE_DIARY_SUCCESS,
 });
 

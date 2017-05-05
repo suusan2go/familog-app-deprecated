@@ -1,14 +1,16 @@
+/* @flow */
 import { connect } from 'react-redux';
 import { AsyncStorage } from 'react-native';
 import MainScreen from '../components/MainScreen.js';
 import ApiClient from '../api';
 import * as Actions from '../actions';
+import type { ReduxState } from '../reducers';
 
 const DEVICE_TOKEN_KEY = '@DeviceToken:key';
 
 export default connect(
   (store: ReduxState) => ({ deviceToken: store.deviceToken }),
-  (dispatch: Dispatch<ReduxAction>) => ({
+  (dispatch: Dispatch) => ({
     actions: {
       setupApp: async () => {
         const Api = new ApiClient();

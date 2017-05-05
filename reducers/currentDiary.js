@@ -1,9 +1,18 @@
+/* @flow */
 import * as Actions from '../actions';
+import type { SetCurrentDiaryAction } from '../actions';
+
+export type CurrentDiaryState =
+  | {
+      id: number,
+      title: string,
+    }
+  | null;
 
 // reducer
 export default (
-  state: { id: number, title: string } = null,
-  action: Actions.createDiarySuccess
+  state: CurrentDiaryState = null,
+  action: SetCurrentDiaryAction
 ) => {
   switch (action.type) {
     case Actions.SET_CURRENT_DIARY:

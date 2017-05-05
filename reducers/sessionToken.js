@@ -1,8 +1,11 @@
+/* @flow */
 import * as Actions from '../actions';
+
+export type SessionTokenState = string | null;
 
 // reducer
 export default (
-  state: string = null,
+  state: SessionTokenState = null,
   action: Actions.SetSessionTokenAction
 ) => {
   switch (action.type) {
