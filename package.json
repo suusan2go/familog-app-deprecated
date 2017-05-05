@@ -40,6 +40,7 @@
     "react-native-elements": "^0.11.2",
     "react-native-keyboard-aware-scroll-view": "^0.2.8",
     "react-native-keyboard-aware-scrollview": "^1.1.6",
+    "react-native-loading-spinner-overlay": "latest",
     "react-navigation": "^1.0.0-beta.7",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",

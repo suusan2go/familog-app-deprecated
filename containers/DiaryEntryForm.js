@@ -9,7 +9,8 @@ import type { ReduxState } from '../reducers';
 
 type navigationProps = {
   navigation: {
-    navigate: string => void,
+    navigate: (screenName: string) => void,
+    goBack: () => void,
   },
 };
 
@@ -55,6 +56,7 @@ export default connect(
             currentDiary.id,
           );
           dispatch(Actions.createDiaryEntrySuccess());
+          ownProps.navigation.goBack();
         } catch (error) {
           dispatch(Actions.createDiaryEntryFailure());
         }

@@ -20,6 +20,7 @@ import Field from './Field.js';
 import FieldContainer from './FieldContainer.js';
 import ImageField from './FieldImage.js';
 import headerStyle from './headerStyle.js';
+import Spinner from 'react-native-loading-spinner-overlay';
 import type { DiaryEntryFormState } from '../reducers/diaryEntryForm';
 import type { DiaryEntryFormActions } from '../containers/DiaryEntryForm';
 
@@ -42,9 +43,21 @@ export default class DiaryEntryForm extends React.Component {
     ),
   });
 
+  isDisabled(): boolean {
+    return (
+      this.props.diaryEntryForm.isSubmitting ||
+      this.props.diaryEntryForm.title.length === 0 ||
+      this.props.diaryEntryForm.body.length === 0
+    );
+  }
+
   render() {
     return (
       <KeyboardAwareScrollView>
+        <Spinner
+          visible={this.props.diaryEntryForm.isSubmitting}
+          textStyle={{ color: 'mediumseagreen' }}
+        />
         <Field
           label="タイトル"
           fieldValue={this.props.diaryEntryForm.title}
@@ -87,6 +100,7 @@ export default class DiaryEntryForm extends React.Component {
           <Button
             title="保存する"
             backgroundColor="limegreen"
+            disabled={this.isDisabled()}
             onPress={this.props.actions.createDiaryEntry}
           />
         </View>
