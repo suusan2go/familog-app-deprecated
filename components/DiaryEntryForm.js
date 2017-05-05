@@ -60,9 +60,18 @@ export default class DiaryEntryForm extends React.Component {
           <View
             style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}
           >
-            <ImageField />
-            <ImageField />
-            <ImageField />
+            <ImageField
+              imageUrl={this.props.diaryEntryForm.image1}
+              onChange={this.props.actions.handleChangeImage1}
+            />
+            <ImageField
+              imageUrl={this.props.diaryEntryForm.image2}
+              onChange={this.props.actions.handleChangeImage2}
+            />
+            <ImageField
+              imageUrl={this.props.diaryEntryForm.image3}
+              onChange={this.props.actions.handleChangeImage3}
+            />
           </View>
         </FieldContainer>
         <View style={{ paddingVertical: 40 }}>

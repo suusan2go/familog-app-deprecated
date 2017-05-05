@@ -25,7 +25,7 @@
 
 ; Ignore missing expo-sdk dependencies (temporarily)
 ; https://github.com/exponent/exponent-sdk/issues/36
-.*/node_modules/expo/src/*
+; .*/node_modules/expo/src/*
 
 [include]
 ./flow-typed/npm
