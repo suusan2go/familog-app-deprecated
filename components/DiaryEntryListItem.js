@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, FlatList, View, Image, TouchableHighlight } from 'react-native';
 import nodeEmoji from 'node-emoji';
+import moment from 'moment';
 import type { DiaryEntryState } from '../reducers/diaryEntryList';
 
 class DiaryEntryListItem extends Component {
@@ -10,6 +11,14 @@ class DiaryEntryListItem extends Component {
       navigate: (scrren: string) => void,
     },
   };
+
+  localCreatedAt() {
+    const { diaryEntry } = this.props;
+    return moment
+      .parseZone(diaryEntry.createdAt)
+      .local()
+      .format('YYYY-MM-DD HH:mm');
+  }
 
   render() {
     const { diaryEntry, navigation } = this.props;
@@ -56,7 +65,7 @@ class DiaryEntryListItem extends Component {
               style={{ flexDirection: 'row', justifyContent: 'space-between' }}
             >
               <Text style={{ fontSize: 12, marginBottom: 10, color: 'grey' }}>
-                2017-10-21
+                {this.localCreatedAt()}
               </Text>
               <Text style={{ fontSize: 12, marginBottom: 10, color: 'grey' }}>
                 by すーさん

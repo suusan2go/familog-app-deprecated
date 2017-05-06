@@ -13,12 +13,12 @@ export type DiaryEntryState = {
   title: string,
   body: string,
   emoji: string,
-  update_at: string,
-  created_at: string,
+  updateAt: string,
+  createdAt: string,
   user: {
     id: number,
-    update_at: string,
-    created_at: string,
+    updateAt: string,
+    createdAt: string,
   },
   diaryEntryImages: ?{
     id: number,
