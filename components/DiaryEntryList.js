@@ -8,7 +8,6 @@ import {
   Dimensions,
   RefreshControl,
 } from 'react-native';
-import nodeEmoji from 'node-emoji';
 import { StackNavigator } from 'react-navigation';
 import { Icon, Button } from 'react-native-elements';
 import { Constants } from 'expo';

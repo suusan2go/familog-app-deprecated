@@ -56,6 +56,10 @@
   dependencies:
     cross-spawn "^4.0.0"
 
+"@moqada/rn-twemoji@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@moqada/rn-twemoji/-/rn-twemoji-0.2.1.tgz#789c88f210ef769d52a3d2d72e8f4a2c0365688a"
+
 "@segment/loosely-validate-event@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@segment/loosely-validate-event/-/loosely-validate-event-1.1.2.tgz#d77840999e3f7e43e74b3b0d43391c1526f793b8"

@@ -1,7 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
 import { Text, FlatList, View, Image, TouchableHighlight } from 'react-native';
-import nodeEmoji from 'node-emoji';
 import moment from 'moment';
 import type { DiaryEntryState } from '../reducers/diaryEntryList';
 
@@ -56,19 +55,21 @@ class DiaryEntryListItem extends Component {
                 : require('./photo01.jpg')
             }
           >
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-              <Text
-                style={{
-                  fontSize: 30,
-                  top: 60,
-                  right: 0,
-                  position: 'absolute',
-                  backgroundColor: 'transparent',
-                }}
-              >
-                {nodeEmoji.get('smile')}
-              </Text>
-            </View>
+            {diaryEntry.emoji !== null &&
+              diaryEntry.emoji.length > 0 &&
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                <Image
+                  source={require('@moqada/rn-twemoji/n/smile')}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    top: 65,
+                    right: 10,
+                    position: 'absolute',
+                    backgroundColor: 'transparent',
+                  }}
+                />
+              </View>}
           </Image>
           <View style={{ flex: 4, padding: 5 }}>
             <View

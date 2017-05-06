@@ -90,10 +90,12 @@ export default class DiaryEntry extends Component {
               </Text>
             </View>
           </View>
-          <DiaryEntryImages
-            images={diaryEntry.diaryEntryImages}
-            style={{ flex: 3 }}
-          />
+          {diaryEntry.diaryEntryImages !== null &&
+            diaryEntry.diaryEntryImages.length > 0 &&
+            <DiaryEntryImages
+              images={diaryEntry.diaryEntryImages}
+              style={{ flex: 3 }}
+            />}
           <Text style={{ padding: 10, fontSize: 16 }}>{diaryEntry.body}</Text>
         </ScrollView>
       : <View
