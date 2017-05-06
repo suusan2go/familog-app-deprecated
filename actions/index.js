@@ -35,6 +35,19 @@ export const setSessionToken = (
   payload: sessionToken,
 });
 
+// Sessiontoken
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export type SetCurrentUserAction = {
+  type: typeof SET_CURRENT_USER,
+  payload: number,
+};
+export const setCurrentUser = (
+  currentUserId: number,
+): SetCurrentUserAction => ({
+  type: SET_CURRENT_USER,
+  payload: currentUserId,
+});
+
 // Diary
 export const CREATE_DIARY_START = 'CREATE_DIARY_START';
 export type CreateDiaryStartAction = {

@@ -1,14 +1,19 @@
+/* @flow */
 import React, { Component } from 'react';
 import { Text, FlatList, View, Image, TouchableHighlight } from 'react-native';
 import nodeEmoji from 'node-emoji';
 import moment from 'moment';
 import type { DiaryEntryState } from '../reducers/diaryEntryList';
 
+export type DiaryEntryPathParams = {
+  id: number,
+};
+
 class DiaryEntryListItem extends Component {
   props: {
     diaryEntry: DiaryEntryState,
     navigation: {
-      navigate: (scrren: string) => void,
+      navigate: (scrren: string, params: DiaryEntryPathParams) => void,
     },
   };
 
@@ -31,7 +36,7 @@ class DiaryEntryListItem extends Component {
       <TouchableHighlight
         underlayColor="lightgrey"
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('DiaryEntry', { name: 'Lucy' })}
+        onPress={() => navigation.navigate('DiaryEntry', { id: diaryEntry.id })}
       >
         <View
           style={{

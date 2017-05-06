@@ -6,7 +6,7 @@ export type SessionTokenState = string | null;
 // reducer
 export default (
   state: SessionTokenState = null,
-  action: Actions.SetSessionTokenAction
+  action: Actions.SetSessionTokenAction,
 ) => {
   switch (action.type) {
     case Actions.SET_SESSION_TOKEN:

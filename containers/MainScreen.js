@@ -23,10 +23,11 @@ export default connect(
         await AsyncStorage.setItem(DEVICE_TOKEN_KEY, deviceToken);
         // set Session Token
         const sessionToken = await Api.createSessionToken(deviceToken);
-        dispatch(Actions.setSessionToken(sessionToken));
+        dispatch(Actions.setSessionToken(sessionToken.token));
+        dispatch(Actions.setCurrentUser(sessionToken.userId));
 
         // set currentDiary if exists
-        Api.sessionToken = sessionToken;
+        Api.sessionToken = sessionToken.token;
         const diaryList: {
           diaries: Array<{ id: number, title: string }>,
         } = await Api.getDiaries();

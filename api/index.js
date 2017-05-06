@@ -22,7 +22,7 @@ export default class ApiClient {
       deviceToken,
     });
     const responseJson = await response.json();
-    return responseJson.token;
+    return responseJson;
   }
 
   async createDiary({ title }: { title: string }) {

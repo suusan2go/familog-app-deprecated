@@ -12,7 +12,7 @@ export type CurrentDiaryState =
 // reducer
 export default (
   state: CurrentDiaryState = null,
-  action: SetCurrentDiaryAction
+  action: SetCurrentDiaryAction,
 ) => {
   switch (action.type) {
     case Actions.SET_CURRENT_DIARY:
