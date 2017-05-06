@@ -76,7 +76,10 @@ class DiaryEntryList extends Component {
     );
     return (
       <View
-        style={{ width: Dimensions.get('window').width, flex: 1 }}
+        style={{
+          width: Dimensions.get('window').width,
+          flex: 1,
+        }}
         onLayout={this.onLayout}
       >
         {currentDiary === null &&

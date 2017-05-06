@@ -1,7 +1,7 @@
 import React from 'react';
 import { Linking } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import DiaryEntry from './DiaryEntry.js';
+import DiaryEntry from '../containers/DiaryEntry.js';
 import DiaryForm from '../containers/DiaryForm.js';
 import DiaryEntryForm from '../containers/DiaryEntryForm.js';
 import HomeScreen from './HomeScreen.js';

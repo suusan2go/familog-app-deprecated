@@ -13,7 +13,7 @@ export type DiaryEntryState = {
   title: string,
   body: string,
   emoji: string,
-  updateAt: string,
+  updatedAt: string,
   createdAt: string,
   user: {
     id: number,
@@ -45,7 +45,7 @@ export default (
     | GetDiaryEntryListFailureAction
     | UnshiftDiaryEntryListAction
     | PushDiaryEntryListAction,
-) => {
+): DiaryEntryListState => {
   switch (action.type) {
     case Actions.GET_DIARY_ENTRY_LIST_START:
       return Object.assign({}, state, { isLoading: true });

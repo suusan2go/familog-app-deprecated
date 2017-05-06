@@ -70,6 +70,14 @@ export default class ApiClient {
     });
   }
 
+  async getDiaryEntry(diaryEntryID: number) {
+    const response: Response = await this.get(
+      url.DIARY_ENTRY_URL(diaryEntryID),
+    );
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',

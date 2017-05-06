@@ -191,3 +191,15 @@ export const pushDiaryEntryList = (
   type: PUSH_DIARY_ENTRY_LIST,
   payload: payload,
 });
+
+export const SET_DIARY_ENTRY = 'SET_DIARY_ENTRY';
+export type SetDiaryEntryAction = {
+  type: typeof SET_DIARY_ENTRY,
+  payload: DiaryEntryState,
+};
+export const setDiaryEntry = (
+  payload: DiaryEntryState,
+): SetDiaryEntryAction => ({
+  type: SET_DIARY_ENTRY,
+  payload: payload,
+});
