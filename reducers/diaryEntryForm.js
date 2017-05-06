@@ -31,7 +31,7 @@ export type DiaryEntryFormState = {
 const initialState = {
   title: '',
   body: '',
-  emoji: '',
+  emoji: 'smile',
   image1: null,
   image2: null,
   image3: null,

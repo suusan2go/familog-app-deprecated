@@ -14,7 +14,7 @@ import {
 import {
   KeyboardAwareScrollView,
 } from 'react-native-keyboard-aware-scrollview';
-import { Button } from 'react-native-elements';
+import { Button, ButtonGroup } from 'react-native-elements';
 import { Icon } from 'react-native-elements';
 import Field from './Field.js';
 import FieldContainer from './FieldContainer.js';
@@ -23,6 +23,51 @@ import headerStyle from './headerStyle.js';
 import Spinner from 'react-native-loading-spinner-overlay';
 import type { DiaryEntryFormState } from '../reducers/diaryEntryForm';
 import type { DiaryEntryFormActions } from '../containers/DiaryEntryForm';
+
+const buttons = [
+  {
+    element: () => (
+      <Image
+        source={require(`@moqada/rn-twemoji/n/smile`)}
+        style={{
+          height: 25,
+          width: 25,
+          marginRight: 10,
+          backgroundColor: 'transparent',
+        }}
+      />
+    ),
+    name: 'smile',
+  },
+  {
+    element: () => (
+      <Image
+        source={require(`@moqada/rn-twemoji/n/tired_face`)}
+        style={{
+          height: 25,
+          width: 25,
+          marginRight: 10,
+          backgroundColor: 'transparent',
+        }}
+      />
+    ),
+    name: 'tired_face',
+  },
+  {
+    element: () => (
+      <Image
+        source={require(`@moqada/rn-twemoji/n/cry`)}
+        style={{
+          height: 25,
+          width: 25,
+          marginRight: 10,
+          backgroundColor: 'transparent',
+        }}
+      />
+    ),
+    name: 'cry',
+  },
+];
 
 export default class DiaryEntryForm extends React.Component {
   props: {
@@ -51,7 +96,14 @@ export default class DiaryEntryForm extends React.Component {
     );
   }
 
+  handleClickEmoji(index: number) {
+    this.props.actions.handleChangeEmoji(buttons[index].name);
+  }
+
   render() {
+    const selectedIndex = buttons.findIndex(
+      button => button.name === this.props.diaryEntryForm.emoji,
+    );
     return (
       <KeyboardAwareScrollView>
         <Spinner
@@ -69,6 +121,14 @@ export default class DiaryEntryForm extends React.Component {
           onChange={this.props.actions.handleChangeBody}
           multiline={true}
         />
+        <FieldContainer label="今日の気分">
+          <ButtonGroup
+            onPress={this.handleClickEmoji.bind(this)}
+            selectedIndex={selectedIndex}
+            buttons={buttons}
+            containerStyle={{ height: 50 }}
+          />
+        </FieldContainer>
         <FieldContainer label="今日の一枚">
           <View
             style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}
