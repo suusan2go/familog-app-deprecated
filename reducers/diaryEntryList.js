@@ -17,6 +17,7 @@ export type DiaryEntryState = {
   createdAt: string,
   user: {
     id: number,
+    name: string,
     updateAt: string,
     createdAt: string,
   },

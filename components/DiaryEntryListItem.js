@@ -20,6 +20,11 @@ class DiaryEntryListItem extends Component {
       .format('YYYY-MM-DD HH:mm');
   }
 
+  userName() {
+    const { diaryEntry: { user } } = this.props;
+    return user.name.length !== 0 ? `by ${user.name}` : 'by 名無し';
+  }
+
   render() {
     const { diaryEntry, navigation } = this.props;
     return (
@@ -68,7 +73,7 @@ class DiaryEntryListItem extends Component {
                 {this.localCreatedAt()}
               </Text>
               <Text style={{ fontSize: 12, marginBottom: 10, color: 'grey' }}>
-                by すーさん
+                {this.userName()}
               </Text>
             </View>
             <Text
