@@ -36,5 +36,5 @@ export default connect(
         dispatch(Actions.handleChangeDiary({ title }));
       },
     },
-  })
+  }),
 )(DiaryForm);

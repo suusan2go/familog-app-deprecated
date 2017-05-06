@@ -58,9 +58,10 @@ export default connect(
           );
           dispatch(Actions.createDiaryEntrySuccess());
           ownProps.navigation.goBack();
-          const diaryEntryList = await Api.getDiaryEntries(currentDiary.id, {
-            max_id: currentDiaryEntryList.diaryEntries[0].id,
-          });
+          const diaryEntryList = await Api.getMoreNewerDiaryEntries(
+            currentDiary.id,
+            currentDiaryEntryList.diaryEntries[0].id,
+          );
           // load first diary entry
           dispatch(Actions.unshiftDiaryEntryList(diaryEntryList.diaryEntries));
           dispatch(Actions.getDiaryEntryListSuccess());

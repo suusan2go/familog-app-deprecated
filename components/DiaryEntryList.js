@@ -6,6 +6,7 @@ import {
   Image,
   TouchableHighlight,
   Dimensions,
+  RefreshControl,
 } from 'react-native';
 import nodeEmoji from 'node-emoji';
 import { StackNavigator } from 'react-navigation';
@@ -18,6 +19,7 @@ import type {
   DiaryEntryListState,
   DiaryEntryState,
 } from '../reducers/diaryEntryList';
+import type { DiaryEntryListActions } from '../containers/DiaryEntryList';
 
 class DiaryEntryList extends Component {
   props: {
@@ -26,6 +28,7 @@ class DiaryEntryList extends Component {
     },
     currentDiary: CurrentDiaryState,
     diaryEntryList: DiaryEntryListState,
+    actions: DiaryEntryListActions,
   };
 
   static navigationOptions = {
@@ -98,6 +101,13 @@ class DiaryEntryList extends Component {
               enableEmptySections={true}
               keyExtractor={(item, index) => item.id}
               automaticallyAdjustContentInsets={false}
+              onEndReached={this.props.actions.loadMoreOlderDiaryEntries}
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.props.diaryEntryList.isLoading}
+                  onRefresh={this.props.actions.loadMoreNewerDiaryEntries}
+                />
+              }
             />
             <Icon
               raised

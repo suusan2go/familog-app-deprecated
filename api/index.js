@@ -58,6 +58,18 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async getMoreNewerDiaryEntries(diaryID: number, maxId: number) {
+    return this.getDiaryEntries(diaryID, {
+      max_id: maxId,
+    });
+  }
+
+  async getMoreOlderDiaryEntries(diaryID: number, sinceId: number) {
+    return this.getDiaryEntries(diaryID, {
+      since_id: sinceId,
+    });
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',

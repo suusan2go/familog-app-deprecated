@@ -135,7 +135,7 @@ export const GET_DIARY_ENTRY_LIST_START = 'GET_DIARY_ENTRY_LIST_START';
 export type GetDiaryEntryListStartAction = {
   type: typeof GET_DIARY_ENTRY_LIST_START,
 };
-export const getDiaryEntryList = (): GetDiaryEntryListStartAction => ({
+export const getDiaryEntryListStart = (): GetDiaryEntryListStartAction => ({
   type: GET_DIARY_ENTRY_LIST_START,
 });
 
