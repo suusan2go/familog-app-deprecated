@@ -10,6 +10,8 @@ import diaryForm from './diaryForm';
 import type { DiaryFormState } from './diaryForm';
 import diaryEntryForm from './diaryEntryForm';
 import type { DiaryEntryFormState } from './diaryEntryForm';
+import diaryEntryList from './diaryEntryList';
+import type { DiaryEntryListState } from './diaryEntryList';
 
 export type ReduxState = {
   deviceToken: DeviceTokenState,
@@ -17,6 +19,7 @@ export type ReduxState = {
   diaryForm: DiaryFormState,
   currentDiary: CurrentDiaryState,
   diaryEntryForm: DiaryEntryFormState,
+  diaryEntryList: DiaryEntryListState,
 };
 
 const reducers = combineReducers({
@@ -25,6 +28,7 @@ const reducers = combineReducers({
   currentDiary,
   diaryForm,
   diaryEntryForm,
+  diaryEntryList,
 });
 
 export default reducers;

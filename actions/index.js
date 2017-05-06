@@ -1,4 +1,7 @@
 /* @flow */
+import type { DiaryEntryState } from '../reducers/diaryEntryList';
+
+// Devicetoken
 export const REGISTER_OR_SET_DEVICE_TOKEN = 'REGISTER_OR_SET_DEVICE_TOKEN';
 export type RegisterOrSetDeviceTokenAction = {
   type: typeof REGISTER_OR_SET_DEVICE_TOKEN,
@@ -19,6 +22,7 @@ export const setDeviceToken = (deviceToken: string): SetDeviceTokenAction => ({
   payload: deviceToken,
 });
 
+// Sessiontoken
 export const SET_SESSION_TOKEN = 'SET_SESSION_TOKEN';
 export type SetSessionTokenAction = {
   type: typeof SET_SESSION_TOKEN,
@@ -31,6 +35,7 @@ export const setSessionToken = (
   payload: sessionToken,
 });
 
+// Diary
 export const CREATE_DIARY_START = 'CREATE_DIARY_START';
 export type CreateDiaryStartAction = {
   type: typeof CREATE_DIARY_START,
@@ -83,6 +88,7 @@ export const handleChangeDiary = (payload: {
   payload: payload,
 });
 
+// DiaryEntry
 export const CREATE_DIARY_ENTRY_START = 'CREATE_DIARY_ENTRY_START';
 export type CreateDiaryEntryStartAction = {
   type: typeof CREATE_DIARY_ENTRY_START,
@@ -121,5 +127,54 @@ export const handleChangeDiaryEntry = (payload: {|
   image3?: { uri: string, name: string, type: string },
 |}): HandleChangeDiaryEntryAction => ({
   type: HANDLE_CHANGE_DIARY_ENTRY,
+  payload: payload,
+});
+
+// DiaryEntryList
+export const GET_DIARY_ENTRY_LIST_START = 'GET_DIARY_ENTRY_LIST_START';
+export type GetDiaryEntryListStartAction = {
+  type: typeof GET_DIARY_ENTRY_LIST_START,
+};
+export const getDiaryEntryList = (): GetDiaryEntryListStartAction => ({
+  type: GET_DIARY_ENTRY_LIST_START,
+});
+
+export const GET_DIARY_ENTRY_LIST_SUCCESS = 'GET_DIARY_ENTRY_LIST_SUCCESS';
+export type GetDiaryEntryListSuccessAction = {
+  type: typeof GET_DIARY_ENTRY_LIST_SUCCESS,
+};
+export const getDiaryEntryListSuccess = (): GetDiaryEntryListSuccessAction => ({
+  type: GET_DIARY_ENTRY_LIST_SUCCESS,
+});
+
+export const GET_DIARY_ENTRY_LIST_FAILURE = 'CREATE_DIARY_LIST_FAILURE';
+export type GetDiaryEntryListFailureAction = {
+  type: typeof GET_DIARY_ENTRY_LIST_FAILURE,
+};
+export const getDiaryEntryListFailure = (): GetDiaryEntryListFailureAction => ({
+  type: GET_DIARY_ENTRY_LIST_FAILURE,
+});
+
+export const UNSHIFT_DIARY_ENTRY_LIST = 'UNSHIFT_DIARY_ENTRY_LIST';
+export type UnshiftDiaryEntryListAction = {
+  type: typeof UNSHIFT_DIARY_ENTRY_LIST,
+  payload: Array<DiaryEntryState>,
+};
+export const unshiftDiaryEntryList = (
+  payload: Array<DiaryEntryState>,
+): UnshiftDiaryEntryListAction => ({
+  type: UNSHIFT_DIARY_ENTRY_LIST,
+  payload: payload,
+});
+
+export const PUSH_DIARY_ENTRY_LIST = 'PUSH_DIARY_ENTRY_LIST';
+export type PushDiaryEntryListAction = {
+  type: typeof PUSH_DIARY_ENTRY_LIST,
+  payload: Array<DiaryEntryState>,
+};
+export const pushDiaryEntryList = (
+  payload: Array<DiaryEntryState>,
+): PushDiaryEntryListAction => ({
+  type: PUSH_DIARY_ENTRY_LIST,
   payload: payload,
 });

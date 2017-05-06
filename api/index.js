@@ -39,8 +39,20 @@ export default class ApiClient {
 
   async createDiaryEntry(body: DiaryEntryFormState, diaryID: number) {
     const response: Response = await this.postWithFile(
-      url.POST_DIARY_ENTRIES_URL(diaryID),
+      url.DIARY_ENTRIES_URL(diaryID),
       body,
+    );
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
+  async getDiaryEntries(
+    diaryID: number,
+    queryParams?: { maxID?: number, sinceID?: number },
+  ) {
+    const response: Response = await this.get(
+      url.DIARY_ENTRIES_URL(diaryID),
+      queryParams,
     );
     const responseJson = await response.json();
     return responseJson;

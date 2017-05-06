@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text,
-  ListView,
+  FlatList,
   View,
   Image,
   TouchableHighlight,
@@ -12,16 +12,20 @@ import { StackNavigator } from 'react-navigation';
 import { Icon, Button } from 'react-native-elements';
 import { Constants } from 'expo';
 import headerStyle from './headerStyle.js';
+import DiaryEntryListItem from './DiaryEntryListItem.js';
+import type { CurrentDiaryState } from '../reducers/currentDiary';
+import type {
+  DiaryEntryListState,
+  DiaryEntryState,
+} from '../reducers/diaryEntryList';
 
 class DiaryEntryList extends Component {
   props: {
     navigation: {
       navigate: func,
     },
-    currentDiary: {
-      id: number,
-      name: string,
-    },
+    currentDiary: CurrentDiaryState,
+    diaryEntryList: DiaryEntryListState,
   };
 
   static navigationOptions = {
@@ -39,11 +43,7 @@ class DiaryEntryList extends Component {
 
   constructor() {
     super();
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2,
-    });
     this.state = {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
       containerWidth: Dimensions.get('window').width,
     };
     this.onLayout = this.onLayout.bind(this);
@@ -54,69 +54,22 @@ class DiaryEntryList extends Component {
   }
 
   render() {
-    const { navigation: { navigate }, currentDiary } = this.props;
-    const _renderRow = rowData => (
-      <TouchableHighlight
-        underlayColor="lightgrey"
-        activeOpacity={0.8}
-        onPress={() =>
-          this.props.navigation.navigate('DiaryEntry', { name: 'Lucy' })}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            borderColor: 'limegreen',
-            borderBottomWidth: 0.4,
-            height: 100,
-            justifyContent: 'center',
-            backgroundColor: 'white',
-          }}
-        >
-          <Image
-            style={{ flex: 3, width: undefined, height: undefined }}
-            source={require('./photo01.jpg')}
-          >
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-              <Text
-                style={{
-                  fontSize: 30,
-                  top: 60,
-                  right: 0,
-                  position: 'absolute',
-                  backgroundColor: 'transparent',
-                }}
-              >
-                {nodeEmoji.get('smile')}
-              </Text>
-            </View>
-          </Image>
-          <View style={{ flex: 4, padding: 5 }}>
-            <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Text style={{ fontSize: 12, marginBottom: 10, color: 'grey' }}>
-                2017-10-21
-              </Text>
-              <Text style={{ fontSize: 12, marginBottom: 10, color: 'grey' }}>
-                by すーさん
-              </Text>
-            </View>
-            <Text
-              style={{ letterSpacing: 0.6, fontSize: 15, marginBottom: 10 }}
-              numberOfLines={1}
-            >
-              今日はみなとみらいまでいったaa
-            </Text>
-            <Text
-              style={{ letterSpacing: 0.6 }}
-              numberOfLines={2}
-              selectable={true}
-            >
-              今日はみなとみらいまでいった.今日はみなとみらいまでい.....aaaaaaaaaaaaaaa
-            </Text>
-          </View>
-        </View>
-      </TouchableHighlight>
+    const {
+      navigation: { navigate },
+      currentDiary,
+      diaryEntryList,
+    } = this.props;
+    const _renderRow = ({
+      item,
+      index,
+    }: {
+      item: DiaryEntryState,
+      index: number,
+    }) => (
+      <DiaryEntryListItem
+        diaryEntry={item}
+        navigation={this.props.navigation}
+      />
     );
     return (
       <View
@@ -139,9 +92,11 @@ class DiaryEntryList extends Component {
           </View>}
         {currentDiary !== null &&
           <View style={{ flex: 1 }}>
-            <ListView
-              dataSource={this.state.dataSource}
-              renderRow={_renderRow}
+            <FlatList
+              data={this.props.diaryEntryList.diaryEntries}
+              renderItem={_renderRow}
+              enableEmptySections={true}
+              keyExtractor={(item, index) => item.id}
               automaticallyAdjustContentInsets={false}
             />
             <Icon

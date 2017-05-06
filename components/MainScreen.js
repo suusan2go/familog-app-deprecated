@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linking } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Diary from './Diary.js';
 import DiaryForm from '../containers/DiaryForm.js';
@@ -28,6 +29,13 @@ export default class MainScreenApp extends React.Component {
 
   componentWillMount() {
     this.props.actions.setupApp();
+    Linking.getInitialURL()
+      .then(url => {
+        if (url) {
+          console.log('Initial url is: ' + url);
+        }
+      })
+      .catch(err => console.error('An error occurred', err));
   }
 
   render() {

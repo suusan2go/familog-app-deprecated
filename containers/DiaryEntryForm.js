@@ -49,6 +49,7 @@ export default connect(
         const Api = new ApiClient(store.getState().sessionToken);
         const diaryEntryForm = store.getState().diaryEntryForm;
         const currentDiary = store.getState().currentDiary;
+        const currentDiaryEntryList = store.getState().diaryEntryList;
         dispatch(Actions.createDiaryEntryStart());
         try {
           const diaryEntry = await Api.createDiaryEntry(
@@ -57,6 +58,12 @@ export default connect(
           );
           dispatch(Actions.createDiaryEntrySuccess());
           ownProps.navigation.goBack();
+          const diaryEntryList = await Api.getDiaryEntries(currentDiary.id, {
+            max_id: currentDiaryEntryList.diaryEntries[0].id,
+          });
+          // load first diary entry
+          dispatch(Actions.unshiftDiaryEntryList(diaryEntryList.diaryEntries));
+          dispatch(Actions.getDiaryEntryListSuccess());
         } catch (error) {
           dispatch(Actions.createDiaryEntryFailure());
         }

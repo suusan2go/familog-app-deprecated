@@ -33,9 +33,16 @@ export default connect(
         // TODO: display DiarySelectionForm
         //       current just set first diary
         if (diaryList.diaries.length > 0) {
+          // setCurrentDiary
           dispatch(Actions.setCurrentDiary(diaryList.diaries[0]));
+          const diaryEntryList = await Api.getDiaryEntries(
+            diaryList.diaries[0].id,
+          );
+          // load first diary entry
+          dispatch(Actions.pushDiaryEntryList(diaryEntryList.diaryEntries));
+          dispatch(Actions.getDiaryEntryListSuccess());
         }
       },
     },
-  })
+  }),
 )(MainScreen);
