@@ -79,7 +79,8 @@ class DiaryEntryList extends Component {
           width: Dimensions.get('window').width,
           flex: 1,
         }}
-        onLayout={this.onLayout}
+        onLayo
+        ut={this.onLayout}
       >
         {currentDiary === null &&
           <View style={{ flex: 1, justifyContent: 'center' }}>

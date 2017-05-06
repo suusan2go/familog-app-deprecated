@@ -29,6 +29,54 @@ class DiaryEntryListItem extends Component {
     return user.name.length !== 0 ? `by ${user.name}` : 'by 名無し';
   }
 
+  emoji() {
+    const { diaryEntry } = this.props;
+    switch (diaryEntry.emoji) {
+      case 'smile':
+        return (
+          <Image
+            source={require(`@moqada/rn-twemoji/n/smile`)}
+            style={{
+              height: 25,
+              width: 25,
+              top: 65,
+              right: 10,
+              position: 'absolute',
+              backgroundColor: 'transparent',
+            }}
+          />
+        );
+      case 'tired_face':
+        return (
+          <Image
+            source={require(`@moqada/rn-twemoji/n/tired_face`)}
+            style={{
+              height: 25,
+              width: 25,
+              top: 65,
+              right: 10,
+              position: 'absolute',
+              backgroundColor: 'transparent',
+            }}
+          />
+        );
+      case 'cry':
+        return (
+          <Image
+            source={require(`@moqada/rn-twemoji/n/cry`)}
+            style={{
+              height: 25,
+              width: 25,
+              top: 65,
+              right: 10,
+              position: 'absolute',
+              backgroundColor: 'transparent',
+            }}
+          />
+        );
+    }
+  }
+
   render() {
     const { diaryEntry, navigation } = this.props;
     return (
@@ -58,17 +106,7 @@ class DiaryEntryListItem extends Component {
             {diaryEntry.emoji !== null &&
               diaryEntry.emoji.length > 0 &&
               <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                <Image
-                  source={require('@moqada/rn-twemoji/n/smile')}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    top: 65,
-                    right: 10,
-                    position: 'absolute',
-                    backgroundColor: 'transparent',
-                  }}
-                />
+                {this.emoji()}
               </View>}
           </Image>
           <View style={{ flex: 4, padding: 5 }}>

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import {
   Text,
+  Image,
   ActivityIndicator,
   ListView,
   View,
@@ -12,7 +13,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import DiaryEntryImages from './DiaryEntryImages';
 import moment from 'moment';
 import type { DiaryEntryPathParams } from './DiaryEntryListItem';
-import type { DiaryEntryState } from '../reducers/diaryEntry';
+import type { DiaryEntryState } from '../reducers/diaryEntryList';
 import type { DiaryEntryActions } from '../containers/DiaryEntry';
 
 export default class DiaryEntry extends Component {
@@ -48,6 +49,48 @@ export default class DiaryEntry extends Component {
     return user.name.length !== 0 ? `by ${user.name}` : 'by 名無し';
   }
 
+  emoji() {
+    const { diaryEntry } = this.props;
+    switch (diaryEntry && diaryEntry.emoji) {
+      case 'smile':
+        return (
+          <Image
+            source={require(`@moqada/rn-twemoji/n/smile`)}
+            style={{
+              height: 25,
+              width: 25,
+              marginRight: 10,
+              backgroundColor: 'transparent',
+            }}
+          />
+        );
+      case 'tired_face':
+        return (
+          <Image
+            source={require(`@moqada/rn-twemoji/n/tired_face`)}
+            style={{
+              height: 25,
+              width: 25,
+              marginRight: 10,
+              backgroundColor: 'transparent',
+            }}
+          />
+        );
+      case 'cry':
+        return (
+          <Image
+            source={require(`@moqada/rn-twemoji/n/cry`)}
+            style={{
+              height: 25,
+              width: 25,
+              marginRight: 10,
+              backgroundColor: 'transparent',
+            }}
+          />
+        );
+    }
+  }
+
   componentWillMount() {
     const id = this.props.navigation.state.params.id;
     this.props.actions.getDiaryEntry(id);
@@ -71,9 +114,19 @@ export default class DiaryEntry extends Component {
           }}
         >
           <View style={{ paddingHorizontal: 10, flex: 1, paddingTop: 20 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-              {diaryEntry.title}
-            </Text>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                paddingVertical: 10,
+                justifyContent: 'flex-start',
+              }}
+            >
+              {this.emoji()}
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                {diaryEntry.title}
+              </Text>
+            </View>
             <View
               style={{
                 flex: 1,
@@ -96,7 +149,16 @@ export default class DiaryEntry extends Component {
               images={diaryEntry.diaryEntryImages}
               style={{ flex: 3 }}
             />}
-          <Text style={{ padding: 10, fontSize: 16 }}>{diaryEntry.body}</Text>
+          <Text
+            style={{
+              padding: 10,
+              fontSize: 18,
+              letterSpacing: 1.0,
+              lineHeight: 24,
+            }}
+          >
+            {diaryEntry.body}
+          </Text>
         </ScrollView>
       : <View
           style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}

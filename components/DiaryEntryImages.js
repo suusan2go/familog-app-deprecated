@@ -48,7 +48,7 @@ const DiaryEntryImages = ({
       {images.map(image => (
         <View style={styles.slide} key={image.id}>
           <Image
-            resizeMode="contain"
+            resizeMode="cover"
             source={{ uri: image.uri }}
             style={{ flex: 1, width: Dimensions.get('window').width }}
           />
