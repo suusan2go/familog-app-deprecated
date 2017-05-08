@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linking } from 'react-native';
+import { Linking, View, StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import DiaryEntry from '../containers/DiaryEntry.js';
 import DiaryForm from '../containers/DiaryForm.js';
@@ -39,6 +39,11 @@ export default class MainScreenApp extends React.Component {
   }
 
   render() {
-    return <MainScreen />;
+    return (
+      <View style={{ flex: 1 }}>
+        <StatusBar barStyle="dark-content" />
+        <MainScreen />
+      </View>
+    );
   }
 }

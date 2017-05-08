@@ -60,7 +60,9 @@ export default connect(
           ownProps.navigation.goBack();
           const diaryEntryList = await Api.getMoreNewerDiaryEntries(
             currentDiary.id,
-            currentDiaryEntryList.diaryEntries[0].id,
+            currentDiaryEntryList.diaryEntries.length > 0
+              ? currentDiaryEntryList.diaryEntries[0].id
+              : 0,
           );
           // load first diary entry
           dispatch(Actions.unshiftDiaryEntryList(diaryEntryList.diaryEntries));

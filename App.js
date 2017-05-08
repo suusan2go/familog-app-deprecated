@@ -1,6 +1,6 @@
 /* @flow */
 import React from 'react';
-import { StyleSheet, Text, TabBarIOS, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import MainScreen from './containers/MainScreen.js';
