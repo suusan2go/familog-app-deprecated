@@ -1,5 +1,6 @@
+import Config from '../config.json';
 /* @flow */
-const HOST = __DEV__ ? 'http://192.168.1.6:8080' : 'https://api.familog.net';
+const HOST = __DEV__ ? 'http://192.168.1.6:8080' : Config.endpoint;
 
 export const DEVICE_URL = `${HOST}/device`;
 export const SESSION_URL = `${HOST}/session`;
