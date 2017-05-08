@@ -36,6 +36,7 @@ export default connect(
         if (diaryList.diaries.length > 0) {
           // setCurrentDiary
           dispatch(Actions.setCurrentDiary(diaryList.diaries[0]));
+          dispatch(Actions.getDiaryEntryListStart());
           const diaryEntryList = await Api.getDiaryEntries(
             diaryList.diaries[0].id,
           );

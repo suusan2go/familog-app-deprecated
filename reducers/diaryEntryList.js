@@ -37,7 +37,7 @@ export type DiaryEntryListState = {
 export default (
   state: DiaryEntryListState = {
     diaryEntries: [],
-    isLoading: true,
+    isLoading: false,
   },
   action:
     | GetDiaryEntryListStartAction
