@@ -21,11 +21,11 @@ export type DiaryEntryState = {
     updateAt: string,
     createdAt: string,
   },
-  diaryEntryImages: ?{
+  diaryEntryImages: ?Array<{
     id: number,
     diaryEntryId: number,
-    url: string,
-  },
+    uri: string,
+  }>,
 };
 
 export type DiaryEntryListState = {

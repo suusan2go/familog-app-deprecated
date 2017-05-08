@@ -25,9 +25,8 @@ var styles = StyleSheet.create({
 const DiaryEntryImages = ({
   images,
 }: {
-  images: Array<{ id: number, uri: string }>,
+  images: Array<{ id: number, diaryEntryId: number, uri: string }>,
 }) => {
-  console.log(images);
   return (
     <Swiper
       height={400}

@@ -143,7 +143,7 @@ export default class DiaryEntry extends Component {
               </Text>
             </View>
           </View>
-          {diaryEntry.diaryEntryImages !== null &&
+          {diaryEntry.diaryEntryImages &&
             diaryEntry.diaryEntryImages.length > 0 &&
             <DiaryEntryImages
               images={diaryEntry.diaryEntryImages}
