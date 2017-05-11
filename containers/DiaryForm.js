@@ -10,6 +10,7 @@ import type { ReduxState } from '../reducers';
 type navigationProps = {
   navigation: {
     navigate: string => void,
+    goBack: () => void,
   },
 };
 
@@ -27,7 +28,7 @@ export default connect(
           const diary = await Api.createDiary(diaryForm);
           dispatch(Actions.createDiarySuccess());
           dispatch(Actions.setCurrentDiary(diary));
-          ownProps.navigation.navigate('DiaryEntryList');
+          ownProps.navigation.goBack();
         } catch (error) {
           dispatch(Actions.createDiaryFailure());
         }

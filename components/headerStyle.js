@@ -7,6 +7,7 @@ export default StyleSheet.create({
     borderStyle: 'solid',
     borderBottomColor: 'limegreen',
     borderBottomWidth: 0.5,
+    paddingHorizontal: 15,
     ...Platform.select({
       ios: {},
       android: {
@@ -19,5 +20,10 @@ export default StyleSheet.create({
     color: 'mediumseagreen',
     fontWeight: 'bold',
     fontSize: 18,
+  },
+  right: {
+    color: 'mediumseagreen',
+    fontWeight: '500',
+    fontSize: 16,
   },
 });

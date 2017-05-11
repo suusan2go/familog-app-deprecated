@@ -9,7 +9,9 @@ import type { ReduxState } from '../reducers';
 const DEVICE_TOKEN_KEY = '@DeviceToken:key';
 
 export default connect(
-  (store: ReduxState) => ({ deviceToken: store.deviceToken }),
+  (store: ReduxState) => ({
+    showInvitation: store.currentDiary !== null,
+  }),
   (dispatch: Dispatch) => ({
     actions: {
       setupApp: async () => {

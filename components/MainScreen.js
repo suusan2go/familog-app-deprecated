@@ -21,7 +21,7 @@ const MainScreen = StackNavigator({
 
 export default class MainScreenApp extends React.Component {
   props: {
-    deviceToken: string,
+    showInvitation: boolean,
     actions: {
       setupApp: Action,
     },
@@ -29,20 +29,15 @@ export default class MainScreenApp extends React.Component {
 
   componentWillMount() {
     this.props.actions.setupApp();
-    Linking.getInitialURL()
-      .then(url => {
-        if (url) {
-          console.log('Initial url is: ' + url);
-        }
-      })
-      .catch(err => console.error('An error occurred', err));
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar barStyle="dark-content" />
-        <MainScreen />
+        <MainScreen
+          screenProps={{ showInvitation: this.props.showInvitation }}
+        />
       </View>
     );
   }

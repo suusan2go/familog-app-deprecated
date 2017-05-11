@@ -12,7 +12,6 @@ export default (
 ): DiaryEntryState => {
   switch (action.type) {
     case Actions.SET_DIARY_ENTRY:
-      console.log(action.payload);
       return Object.assign({}, state, action.payload);
     default:
       return state;

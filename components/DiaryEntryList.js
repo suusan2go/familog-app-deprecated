@@ -30,10 +30,19 @@ class DiaryEntryList extends Component {
     actions: DiaryEntryListActions,
   };
 
-  static navigationOptions = {
+  static navigationOptions = ({ screenProps, navigation }) => ({
     title: '日記',
     headerTitle: <Text style={headerStyle.title}>FamiLog</Text>,
     headerStyle: headerStyle.container,
+    headerRight: screenProps.showInvitation &&
+      <Text
+        style={headerStyle.right}
+        onPress={() => {
+          navigation.navigate('Inivitation');
+        }}
+      >
+        招待
+      </Text>,
     tabBarIcon: ({ tintColor }) => (
       <Icon
         name="book-open-page-variant"
@@ -41,7 +50,7 @@ class DiaryEntryList extends Component {
         color={tintColor}
       />
     ),
-  };
+  });
 
   constructor() {
     super();

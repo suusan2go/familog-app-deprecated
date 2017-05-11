@@ -50,7 +50,6 @@ export default (
     case Actions.GET_DIARY_ENTRY_LIST_START:
       return Object.assign({}, state, { isLoading: true });
     case Actions.GET_DIARY_ENTRY_LIST_SUCCESS:
-      console.log(action);
       return Object.assign({}, state, { isLoading: false });
     case Actions.GET_DIARY_ENTRY_LIST_FAILURE:
       return Object.assign({}, state, { isLoading: false });
