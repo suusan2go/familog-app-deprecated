@@ -43,6 +43,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.2.8",
     "react-native-keyboard-aware-scrollview": "^1.1.6",
     "react-native-loading-spinner-overlay": "latest",
+    "react-native-modalbox": "latest",
     "react-native-swiper": "^1.5.4",
     "react-navigation": "^1.0.0-beta.7",
     "react-redux": "^5.0.4",
