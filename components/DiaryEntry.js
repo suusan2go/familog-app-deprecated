@@ -29,8 +29,9 @@ export default class DiaryEntry extends Component {
   };
 
   static navigationOptions = {
-    title: '日記',
-    headerTitle: <Text style={headerStyle.title}>日記</Text>,
+    title: '',
+    headerTitle: null,
+    headerTintColor: 'mediumseagreen',
     headerStyle: headerStyle.container,
   };
 
