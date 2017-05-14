@@ -22,6 +22,7 @@ export default connect(
       loadMoreNewerDiaryEntries: async () => {
         dispatch(Actions.getDiaryEntryListStart());
         const { currentDiary, sessionToken, diaryEntryList } = store.getState();
+        if (currentDiary === null) return;
         const Api = new ApiClient(store.getState().sessionToken);
         const newDiaryEntryList = await Api.getMoreNewerDiaryEntries(
           currentDiary.id,
@@ -33,6 +34,7 @@ export default connect(
       loadMoreOlderDiaryEntries: async () => {
         dispatch(Actions.getDiaryEntryListStart());
         const { currentDiary, sessionToken, diaryEntryList } = store.getState();
+        if (currentDiary === null) return;
         const Api = new ApiClient(store.getState().sessionToken);
         const newDiaryEntryList = await Api.getMoreOlderDiaryEntries(
           currentDiary.id,

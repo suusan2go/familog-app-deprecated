@@ -1,5 +1,5 @@
-import Config from '../config.json';
 /* @flow */
+import Config from '../config.json';
 const HOST = __DEV__ ? 'http://192.168.1.6:8080' : Config.endpoint;
 
 export const DEVICE_URL = `${HOST}/device`;
@@ -9,3 +9,5 @@ export const DIARY_ENTRIES_URL = (diaryID: number): string =>
   `${HOST}/diaries/${diaryID}/diary_entries`;
 export const DIARY_ENTRY_URL = (diaryEntryID: number): string =>
   `${HOST}/diary_entries/${diaryEntryID}`;
+export const DIARY_INVITATION_URL = (diaryID: number): string =>
+  `${HOST}/diaries/${diaryID}/invitation`;

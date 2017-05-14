@@ -50,6 +50,7 @@ export default connect(
         const diaryEntryForm = store.getState().diaryEntryForm;
         const currentDiary = store.getState().currentDiary;
         const currentDiaryEntryList = store.getState().diaryEntryList;
+        if (currentDiary === null) return;
         dispatch(Actions.createDiaryEntryStart());
         try {
           const diaryEntry = await Api.createDiaryEntry(

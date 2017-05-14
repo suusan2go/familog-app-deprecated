@@ -78,6 +78,14 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async getDiaryInvitation(diaryID: number) {
+    const response: Response = await this.get(
+      url.DIARY_INVITATION_URL(diaryID),
+    );
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',

@@ -5,7 +5,7 @@ import { Button } from 'react-native-elements';
 import { StyleSheet, Platform } from 'react-native';
 import headerStyle from './headerStyle.js';
 import Modal from 'react-native-modal';
-import DiaryInvitation from './DiaryInvitation';
+import DiaryInvitation from '../containers/DiaryInvitation';
 
 export default class DiaryEntryListHeaderRight extends React.Component {
   state: {

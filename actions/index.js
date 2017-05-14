@@ -203,3 +203,20 @@ export const setDiaryEntry = (
   type: SET_DIARY_ENTRY,
   payload: payload,
 });
+
+export const SET_DIARY_INVITATION = 'SET_DIARY_INVITATION';
+export type SetDiaryInvitationAction = {
+  type: typeof SET_DIARY_INVITATION,
+  payload: string,
+};
+export const setDiaryInvitation = (
+  payload: string,
+): SetDiaryInvitationAction => ({
+  type: SET_DIARY_INVITATION,
+  payload: payload,
+});
+
+export type ActionTypes =
+  | SetDiaryInvitationAction
+  | SetDiaryEntryAction
+  | PushDiaryEntryListAction;

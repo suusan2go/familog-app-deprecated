@@ -11,8 +11,24 @@ import {
 } from 'react-native';
 
 export default class DiaryInvitation extends React.Component {
+  props: {
+    invitationCode: string,
+    actions: {
+      getDiaryInvitation: () => void,
+    },
+  };
+
+  constructor() {
+    super();
+  }
+
+  componentWillMount() {
+    this.props.actions.getDiaryInvitation();
+  }
+
   handleCopyPress() {
-    Clipboard.setString('test');
+    console.log(this.props.invitationCode);
+    Clipboard.setString(this.props.invitationCode);
   }
 
   render() {
@@ -21,12 +37,12 @@ export default class DiaryInvitation extends React.Component {
         <Text style={styles.title}>この日記に家族を招待する</Text>
         <Text style={styles.description}>この招待コードを招待したい人にコピーして送ってね！</Text>
         <TouchableHighlight
-          onPress={this.handleCopyPress}
+          onPress={this.handleCopyPress.bind(this)}
           underlayColor="lightgrey"
           activeOpacity={0.8}
         >
-          <View>
-            <Text style={styles.codeWrapper}>Xgearetegaga</Text>
+          <View style={styles.copyArea}>
+            <Text style={styles.codeWrapper}>{this.props.invitationCode}</Text>
             <Text style={styles.copy}>招待コードをコピーする</Text>
           </View>
         </TouchableHighlight>
@@ -58,6 +74,9 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 16,
     marginVertical: 10,
+  },
+  copyArea: {
+    padding: 10,
   },
   copy: {
     fontSize: 14,
