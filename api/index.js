@@ -95,6 +95,11 @@ export default class ApiClient {
         Authorization: this.sessionToken,
       },
       body: JSON.stringify(body),
+    }).then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response;
     });
   }
 
@@ -111,6 +116,11 @@ export default class ApiClient {
         Authorization: this.sessionToken,
       },
       body: formData,
+    }).then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response;
     });
   }
 
@@ -125,6 +135,11 @@ export default class ApiClient {
         'Content-Type': 'application/json',
         Authorization: this.sessionToken,
       },
+    }).then(response => {
+      if (!response.ok) {
+        throw Error(response);
+      }
+      return response;
     });
   }
 }
