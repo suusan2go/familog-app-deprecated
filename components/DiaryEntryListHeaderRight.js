@@ -1,6 +1,7 @@
 /* @flow */
 import React from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { Button } from 'react-native-elements';
 import { StyleSheet, Platform } from 'react-native';
 import headerStyle from './headerStyle.js';
 import Modal from 'react-native-modal';
@@ -31,17 +32,27 @@ export default class DiaryEntryListHeaderRight extends React.Component {
           >
             招待
           </Text>
-          <Modal isVisible={this.state.isVisible}>
-            <View style={styles.modalContent}>
-              <DiaryInvitation wrapperStyle={styles.modalContent} />
-              <Button
-                title="閉じる"
-                onPress={() => {
-                  this.setState({ isVisible: false });
-                }}
-              />
-            </View>
-          </Modal>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              this.setState({ isVisible: false });
+            }}
+          >
+            <Modal isVisible={this.state.isVisible}>
+              <TouchableWithoutFeedback onPress={() => {}}>
+                <View style={styles.modalContent}>
+                  <DiaryInvitation />
+                  <View>
+                    <Button
+                      title="閉じる"
+                      onPress={() => {
+                        this.setState({ isVisible: false });
+                      }}
+                    />
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
+            </Modal>
+          </TouchableWithoutFeedback>
         </View>
       : null;
   }
@@ -50,8 +61,6 @@ const styles = StyleSheet.create({
   modalContent: {
     backgroundColor: 'white',
     padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
     borderRadius: 4,
     borderColor: 'rgba(0, 0, 0, 0.1)',
   },
