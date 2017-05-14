@@ -120,10 +120,13 @@ export default class DiaryEntry extends Component {
                 flexDirection: 'row',
                 paddingVertical: 10,
                 justifyContent: 'flex-start',
+                alignItems: 'flex-start',
               }}
             >
-              {this.emoji()}
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+              <View>
+                {this.emoji()}
+              </View>
+              <Text style={{ fontSize: 20, fontWeight: 'bold', flex: 1 }}>
                 {diaryEntry.title}
               </Text>
             </View>
