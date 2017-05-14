@@ -4,6 +4,7 @@ import { View, TouchableWithoutFeedback } from 'react-native';
 import { Button } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import DiaryForm from '../containers/DiaryForm';
+import DiaryInvitationForm from './DiaryInvitationForm';
 
 export default class DiaryEntryListEmpty extends React.Component {
   state: {
@@ -75,7 +76,7 @@ export default class DiaryEntryListEmpty extends React.Component {
           <Modal isVisible={this.state.openModalType === 'DiaryInvitationForm'}>
             <TouchableWithoutFeedback onPress={() => {}}>
               <View style={styles.modalContent}>
-                <DiaryForm />
+                <DiaryInvitationForm />
               </View>
             </TouchableWithoutFeedback>
           </Modal>
