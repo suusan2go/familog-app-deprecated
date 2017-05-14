@@ -14,6 +14,7 @@ import { Constants } from 'expo';
 import headerStyle from './headerStyle.js';
 import DiaryEntryListItem from './DiaryEntryListItem.js';
 import DiaryEntryListHeaderRight from './DiaryEntryListHeaderRight';
+import DiaryEntryListEmpty from './DiaryEntryListEmpty';
 import type { CurrentDiaryState } from '../reducers/currentDiary';
 import type {
   DiaryEntryListState,
@@ -86,20 +87,7 @@ class DiaryEntryList extends Component {
         onLayo
         ut={this.onLayout}
       >
-        {currentDiary === null &&
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Button
-              large
-              iconLeft
-              backgroundColor="mediumseagreen"
-              icon={{
-                name: 'book-open-page-variant',
-                type: 'material-community',
-              }}
-              onPress={() => navigate('DiaryForm')}
-              title="日記を始める"
-            />
-          </View>}
+        {currentDiary === null && <DiaryEntryListEmpty />}
         {currentDiary !== null &&
           <View style={{ flex: 1 }}>
             <FlatList

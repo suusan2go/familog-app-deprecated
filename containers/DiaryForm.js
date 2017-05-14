@@ -7,18 +7,15 @@ import * as Actions from '../actions';
 import store from '../store';
 import type { ReduxState } from '../reducers';
 
-type navigationProps = {
-  navigation: {
-    navigate: string => void,
-    goBack: () => void,
-  },
+type ownProps = {
+  onSubmiSuccess: () => void,
 };
 
 export default connect(
   (state: ReduxState) => ({
     diaryForm: state.diaryForm,
   }),
-  (dispatch: Dispatch, ownProps: navigationProps) => ({
+  (dispatch: Dispatch, ownProps: ownProps) => ({
     actions: {
       createDiary: async () => {
         const Api = new ApiClient(store.getState().sessionToken);
@@ -28,7 +25,6 @@ export default connect(
           const diary = await Api.createDiary(diaryForm);
           dispatch(Actions.createDiarySuccess());
           dispatch(Actions.setCurrentDiary(diary));
-          ownProps.navigation.goBack();
         } catch (error) {
           dispatch(Actions.createDiaryFailure());
         }
