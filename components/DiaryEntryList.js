@@ -13,6 +13,7 @@ import { Icon, Button } from 'react-native-elements';
 import { Constants } from 'expo';
 import headerStyle from './headerStyle.js';
 import DiaryEntryListItem from './DiaryEntryListItem.js';
+import DiaryInvitation from './DiaryInvitation';
 import type { CurrentDiaryState } from '../reducers/currentDiary';
 import type {
   DiaryEntryListState,
@@ -34,15 +35,7 @@ class DiaryEntryList extends Component {
     title: '日記',
     headerTitle: <Text style={headerStyle.title}>FamiLog</Text>,
     headerStyle: headerStyle.container,
-    headerRight: screenProps.showInvitation &&
-      <Text
-        style={headerStyle.right}
-        onPress={() => {
-          navigation.navigate('Inivitation');
-        }}
-      >
-        招待
-      </Text>,
+    headerRight: screenProps.showInvitation && <DiaryInvitation />,
     tabBarIcon: ({ tintColor }) => (
       <Icon
         name="book-open-page-variant"
