@@ -2,15 +2,11 @@ import React from 'react';
 import { Linking, View, StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import DiaryEntry from '../containers/DiaryEntry.js';
-import DiaryForm from '../containers/DiaryForm.js';
 import DiaryEntryForm from '../containers/DiaryEntryForm.js';
 import HomeScreen from './HomeScreen.js';
 
 const MainScreen = StackNavigator({
   Home: { screen: HomeScreen },
-  DiaryForm: {
-    screen: DiaryForm,
-  },
   DiaryEntry: {
     screen: DiaryEntry,
   },
