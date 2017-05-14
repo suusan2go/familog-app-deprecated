@@ -86,6 +86,15 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async verifyDiaryInvitation(invitationCode: string) {
+    const response: Response = await this.post(
+      url.DIARY_INVITATION_VERIFICATION_URL,
+      { invitationCode },
+    );
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',

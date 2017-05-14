@@ -4,7 +4,7 @@ import { View, TouchableWithoutFeedback } from 'react-native';
 import { Button } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import DiaryForm from '../containers/DiaryForm';
-import DiaryInvitationForm from './DiaryInvitationForm';
+import DiaryInvitationForm from '../containers/DiaryInvitationForm';
 
 export default class DiaryEntryListEmpty extends React.Component {
   state: {

@@ -1,31 +1,31 @@
 /* @flow */
 import { connect } from 'react-redux';
+import { AsyncStorage } from 'react-native';
 import DiaryInvitationForm from '../components/DiaryInvitationForm.js';
 import ApiClient from '../api';
 import * as Actions from '../actions';
 import store from '../store';
 import type { ReduxState } from '../reducers';
 
+type ownProps = {
+  onSubmiSuccess: () => void,
+};
+
 export default connect(
   (state: ReduxState) => ({
     diaryForm: state.diaryForm,
   }),
-  (dispatch: Dispatch) => ({
+  (dispatch: Dispatch, ownProps: ownProps) => ({
     actions: {
-      createDiary: async () => {
+      verifyInvitationCode: async (invitationCode: string) => {
         const Api = new ApiClient(store.getState().sessionToken);
-        const diaryForm = store.getState().diaryForm;
-        dispatch(Actions.createDiaryStart());
         try {
-          const diary = await Api.createDiary(diaryForm);
-          dispatch(Actions.createDiarySuccess());
+          const diary = await Api.verifyDiaryInvitation(invitationCode);
           dispatch(Actions.setCurrentDiary(diary));
         } catch (error) {
-          dispatch(Actions.createDiaryFailure());
+          // TODO: error handling
+          console.log(error);
         }
-      },
-      handleChangeTitle: title => {
-        dispatch(Actions.handleChangeDiary({ title }));
       },
     },
   }),

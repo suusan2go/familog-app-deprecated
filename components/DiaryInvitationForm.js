@@ -16,25 +16,34 @@ import headerStyle from './headerStyle.js';
 
 export default class DiaryInvitationForm extends React.Component {
   props: {
-    diaryInvitationForm: {
-      invitationCode: string,
-      isSubmitting: boolean,
-    },
     actions: {
       verifyInvitationCode: () => void,
-      handleChangeInvitationCode: (value: string) => void,
     },
   };
+
+  state: {
+    invitationCode: string,
+  };
+
+  constructor() {
+    super();
+    this.state = {
+      invitationCode: '',
+    };
+  }
 
   handleSubmit(): void {
     this.props.actions.verifyInvitationCode();
   }
 
+  handleChangeInvitationCode(value: string) {
+    this.setState({
+      invitationCode: value,
+    });
+  }
+
   isDisabled(): boolean {
-    return (
-      this.props.diaryInvitationForm.isSubmitting ||
-      this.props.diaryInvitationForm.invitationCode.length === 0
-    );
+    return this.state.invitationCode.length === 0;
   }
 
   render() {
@@ -42,15 +51,18 @@ export default class DiaryInvitationForm extends React.Component {
       <View>
         <Field
           label="招待コード"
-          fieldValue={this.props.diaryInvitationForm.invitationCode}
-          onChange={this.props.actions.handleChangeInvitationCode}
+          fieldValue={this.state.invitationCode}
+          onChange={this.handleChangeInvitationCode.bind(this)}
         />
         <View style={{ paddingVertical: 40 }}>
           <Button
             title="日記に参加する"
             backgroundColor="mediumseagreen"
             disabled={this.isDisabled()}
-            onPress={this.handleSubmit.bind(this)}
+            onPress={() =>
+              this.props.actions.verifyInvitationCode(
+                this.state.invitationCode,
+              )}
           />
         </View>
       </View>
