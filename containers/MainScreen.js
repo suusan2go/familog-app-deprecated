@@ -1,6 +1,7 @@
 /* @flow */
 import { connect } from 'react-redux';
 import { AsyncStorage } from 'react-native';
+import { Permissions, Notifications } from 'expo';
 import MainScreen from '../components/MainScreen.js';
 import ApiClient from '../api';
 import * as Actions from '../actions';
@@ -46,6 +47,23 @@ export default connect(
           dispatch(Actions.pushDiaryEntryList(diaryEntryList.diaryEntries));
           dispatch(Actions.getDiaryEntryListSuccess());
         }
+
+        // set push notifications
+        // Android remote notification permissions are granted during the app
+        // install, so this will only ask on iOS
+        let { status } = await Permissions.askAsync(
+          Permissions.REMOTE_NOTIFICATIONS,
+        );
+
+        // Stop here if the user did not grant permissions
+        if (status !== 'granted') {
+          return;
+        }
+
+        // Get the token that uniquely identifies this device
+        let pushNotificationToken = await Notifications.getExponentPushTokenAsync();
+        // Register PushNotificationToken to our server.
+        Api.registerPushNotificationToken(deviceToken, pushNotificationToken);
       },
     },
   }),

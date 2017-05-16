@@ -95,6 +95,21 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async registerPushNotificationToken(
+    deviceToken: string,
+    pushNotificationToken: string,
+  ) {
+    const response: Response = await this.post(
+      url.PUSH_NOTIFICATION_TOKENS_URL,
+      {
+        deviceToken,
+        pushNotificationToken,
+      },
+    );
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',

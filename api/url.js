@@ -12,3 +12,4 @@ export const DIARY_ENTRY_URL = (diaryEntryID: number): string =>
 export const DIARY_INVITATION_URL = (diaryID: number): string =>
   `${HOST}/diaries/${diaryID}/invitation`;
 export const DIARY_INVITATION_VERIFICATION_URL = `${HOST}/diary_invitation_verifications`;
+export const PUSH_NOTIFICATION_TOKENS_URL = `${HOST}/push_notification_tokens`;
