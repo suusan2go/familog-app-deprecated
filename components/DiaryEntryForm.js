@@ -76,7 +76,8 @@ export default class DiaryEntryForm extends React.Component {
   };
 
   static navigationOptions = ({ navigation }) => ({
-    headerTitle: <Text style={headerStyle.title}>日記を書く</Text>,
+    title: '日記を書く',
+    headerTintColor: 'mediumseagreen',
     headerStyle: headerStyle.container,
     headerLeft: (
       <Icon

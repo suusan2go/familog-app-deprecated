@@ -1,6 +1,6 @@
 /* @flow */
 import { connect } from 'react-redux';
-import DiaryInvitationForm from '../components/DiaryInvitationForm.js';
+import DiaryForm from '../components/DiaryForm.js';
 import ApiClient from '../api';
 import * as Actions from '../actions';
 import store from '../store';
@@ -29,4 +29,4 @@ export default connect(
       },
     },
   }),
-)(DiaryInvitationForm);
+)(DiaryForm);
