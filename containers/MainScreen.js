@@ -64,6 +64,7 @@ export default connect(
         let pushNotificationToken = await Notifications.getExponentPushTokenAsync();
         // Register PushNotificationToken to our server.
         Api.registerPushNotificationToken(deviceToken, pushNotificationToken);
+        Notifications.setBadgeNumberAsync(0);
       },
     },
   }),
