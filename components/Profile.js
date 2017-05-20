@@ -45,7 +45,7 @@ export default class Profile extends Component {
           style={{
             paddingHorizontal: 10,
             flex: 1,
-            paddingTop: 20,
+            paddingTop: 50,
           }}
         >
           <View
@@ -79,7 +79,7 @@ export default class Profile extends Component {
             padding: 20,
           }}
         >
-          未設定
+          {currentUser.name}
         </Text>
       </ScrollView>
     );

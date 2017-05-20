@@ -1,16 +1,25 @@
 /* @flow */
-import React from 'react'
-import { Text, TextInput, ListView, Button, View, Image, StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import {
+  Text,
+  TextInput,
+  ListView,
+  Button,
+  View,
+  Image,
+  StyleSheet,
+  Platform,
+} from 'react-native';
 
 export default class FieldContainer extends React.Component {
   render() {
-    const { label, containerStyle } = this.props
+    const { label, containerStyle } = this.props;
     return (
       <View style={[styles.labelContainer, containerStyle]}>
         <View style={styles.label}>
-          <Text>{label}</Text>
+          <Text style={styles.labelText}>{label}</Text>
         </View>
-        { this.props.children }
+        {this.props.children}
       </View>
     );
   }
@@ -26,4 +35,8 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
   },
-})
+  labelText: {
+    fontSize: 16,
+    fontWeight: '400',
+  },
+});

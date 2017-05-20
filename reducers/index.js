@@ -16,6 +16,8 @@ import currentUser from './currentUser';
 import type { CurrentUserState } from './currentUser';
 import diaryEntry from './diaryEntry';
 import type { DiaryEntryState } from './diaryEntry';
+import profileForm from './profileForm';
+import type { ProfileFormState } from './profileForm';
 
 export type ReduxState = {
   deviceToken: DeviceTokenState,
@@ -26,6 +28,7 @@ export type ReduxState = {
   diaryEntryList: DiaryEntryListState,
   currentUser: CurrentUserState,
   diaryEntry: DiaryEntryState,
+  profileForm: ProfileFormState,
 };
 
 const reducers = combineReducers({
@@ -37,6 +40,7 @@ const reducers = combineReducers({
   diaryEntryList,
   currentUser,
   diaryEntry,
+  profileForm,
 });
 
 export default reducers;

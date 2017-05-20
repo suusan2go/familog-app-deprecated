@@ -253,13 +253,14 @@ export const updateProfileFailure = (): UpdateProfileFailureAction => ({
 
 export const HANDLE_CHANGE_PROFILE = 'HANDLE_CHANGE_PROFILE';
 export type HandleChangeProfileAction = {
-  type: typeof HANDLE_CHANGE_DIARY,
+  type: typeof HANDLE_CHANGE_PROFILE,
   payload: any,
 };
 export const handleChangeProfile = (payload: {
-  title: string,
+  name?: ?string,
+  image?: ?any,
 }): HandleChangeDiaryAction => ({
-  type: HANDLE_CHANGE_DIARY,
+  type: HANDLE_CHANGE_PROFILE,
   payload: payload,
 });
 
