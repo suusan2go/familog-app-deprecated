@@ -48,6 +48,10 @@ export default connect(
           dispatch(Actions.getDiaryEntryListSuccess());
         }
 
+        // set currentUser
+        const user = await Api.getCurrentUser();
+        dispatch(Actions.setCurrentUser(user));
+
         // set push notifications
         // Android remote notification permissions are granted during the app
         // install, so this will only ask on iOS

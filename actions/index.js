@@ -226,6 +226,43 @@ export const setDiaryInvitation = (
   payload: payload,
 });
 
+// ProfileForm
+export const UPDATE_PROFILE_START = 'UPDATE_PROFILE_START';
+export type UpdateProfileStartAction = {
+  type: typeof UPDATE_PROFILE_START,
+};
+export const updateProfileStart = (): UpdateProfileStartAction => ({
+  type: UPDATE_PROFILE_START,
+});
+
+export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
+export type UpdateProfileSuccessAction = {
+  type: typeof UPDATE_PROFILE_SUCCESS,
+};
+export const updateProfileSuccess = (): UpdateProfileSuccessAction => ({
+  type: UPDATE_PROFILE_SUCCESS,
+});
+
+export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
+export type UpdateProfileFailureAction = {
+  type: typeof UPDATE_PROFILE_FAILURE,
+};
+export const updateProfileFailure = (): UpdateProfileFailureAction => ({
+  type: UPDATE_PROFILE_FAILURE,
+});
+
+export const HANDLE_CHANGE_PROFILE = 'HANDLE_CHANGE_PROFILE';
+export type HandleChangeProfileAction = {
+  type: typeof HANDLE_CHANGE_DIARY,
+  payload: any,
+};
+export const handleChangeProfile = (payload: {
+  title: string,
+}): HandleChangeDiaryAction => ({
+  type: HANDLE_CHANGE_DIARY,
+  payload: payload,
+});
+
 export type ActionTypes =
   | SetDiaryInvitationAction
   | SetDiaryEntryAction

@@ -1,17 +1,19 @@
 /* @flow */
 import * as Actions from '../actions';
 
-export type CurrentUserState = ?{
+export type CurrentUserState = {
   id: number,
-  name: ?string,
-  imageUrl: ?{
+  name?: ?string,
+  image?: ?{
     uri: string,
+    type: string,
+    name: string,
   },
 };
 
 // reducer
 export default (
-  state: CurrentUserState = null,
+  state: CurrentUserState = { id: 0 },
   action: Actions.SetCurrentUserAction,
 ) => {
   switch (action.type) {

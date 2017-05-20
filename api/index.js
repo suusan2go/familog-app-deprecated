@@ -110,6 +110,12 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async getCurrentUser() {
+    const response: Response = await this.get(url.USER_URL);
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',
