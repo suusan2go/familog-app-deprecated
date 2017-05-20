@@ -39,13 +39,23 @@ export const setSessionToken = (
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export type SetCurrentUserAction = {
   type: typeof SET_CURRENT_USER,
-  payload: number,
+  payload: {
+    id?: number,
+    name?: string,
+    image?: {
+      uri: string,
+    },
+  },
 };
-export const setCurrentUser = (
-  currentUserId: number,
-): SetCurrentUserAction => ({
+export const setCurrentUser = (payload: {
+  id?: number,
+  name?: string,
+  image?: {
+    uri: string,
+  },
+}): SetCurrentUserAction => ({
   type: SET_CURRENT_USER,
-  payload: currentUserId,
+  payload,
 });
 
 // Diary

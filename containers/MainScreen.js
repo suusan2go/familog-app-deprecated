@@ -27,7 +27,7 @@ export default connect(
         // set Session Token
         const sessionToken = await Api.createSessionToken(deviceToken);
         dispatch(Actions.setSessionToken(sessionToken.token));
-        dispatch(Actions.setCurrentUser(sessionToken.userId));
+        dispatch(Actions.setCurrentUser({ id: sessionToken.userId }));
 
         // set currentDiary if exists
         Api.sessionToken = sessionToken.token;
