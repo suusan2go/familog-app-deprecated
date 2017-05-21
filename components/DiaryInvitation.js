@@ -27,7 +27,6 @@ export default class DiaryInvitation extends React.Component {
   }
 
   handleCopyPress() {
-    console.log(this.props.invitationCode);
     Clipboard.setString(this.props.invitationCode);
   }
 

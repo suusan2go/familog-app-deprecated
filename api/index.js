@@ -3,6 +3,7 @@ import * as url from './url.js';
 import uuid from 'uuid';
 import qs from 'qs';
 import type { DiaryEntryFormState } from '../reducers/diaryEntryForm';
+import type { ProfileFormState } from '../reducers/profileForm';
 
 export default class ApiClient {
   sessionToken: ?string;
@@ -116,6 +117,12 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async updateProfile(body: ProfileFormState) {
+    const response: Response = await this.patchWithFile(url.USER_URL, body);
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   post(url: string, body: any) {
     return fetch(url, {
       method: 'POST',
@@ -140,6 +147,27 @@ export default class ApiClient {
     }
     return fetch(url, {
       method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
+        Authorization: this.sessionToken,
+      },
+      body: formData,
+    }).then(response => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      return response;
+    });
+  }
+
+  patchWithFile(url: string, body: any) {
+    const formData = new FormData();
+    for (let name in body) {
+      formData.append(name, body[name]);
+    }
+    return fetch(url, {
+      method: 'PATCH',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data',

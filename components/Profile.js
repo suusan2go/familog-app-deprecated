@@ -55,7 +55,7 @@ export default class Profile extends Component {
               alignSelf: 'center',
             }}
           >
-            {currentUser.image == null
+            {currentUser.imageUrl == null
               ? <Avatar
                   xlarge
                   rounded
@@ -65,7 +65,7 @@ export default class Profile extends Component {
               : <Avatar
                   xlarge
                   rounded
-                  source={{ uri: currentUser.image.uri }}
+                  source={{ uri: currentUser.imageUrl }}
                   activeOpacity={1}
                 />}
           </View>

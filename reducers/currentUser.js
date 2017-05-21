@@ -4,11 +4,7 @@ import * as Actions from '../actions';
 export type CurrentUserState = {
   id: number,
   name?: ?string,
-  image?: ?{
-    uri: string,
-    type: string,
-    name: string,
-  },
+  imageUrl?: ?string,
 };
 
 // reducer
