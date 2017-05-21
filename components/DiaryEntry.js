@@ -47,7 +47,34 @@ export default class DiaryEntry extends Component {
   userName() {
     if (this.props.diaryEntry === null) return;
     const { diaryEntry: { user } } = this.props;
-    return user.name.length !== 0 ? `by ${user.name}` : 'by 名無し';
+    const name = user.name.length !== 0 ? `${user.name}` : user.id;
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Text style={{ fontSize: 14, textAlign: 'center', marginRight: 5 }}>
+          by
+        </Text>
+        {this.props.diaryEntry.user.imageUrl
+          ? <Image
+              style={{
+                borderRadius: 12,
+                height: 25,
+                width: 25,
+                marginRight: 5,
+              }}
+              source={{ uri: this.props.diaryEntry.user.imageUrl }}
+            />
+          : null}
+        <Text style={{ fontSize: 14, textAlign: 'center' }}>
+          {name}
+        </Text>
+      </View>
+    );
   }
 
   emoji() {
@@ -139,10 +166,14 @@ export default class DiaryEntry extends Component {
                 justifyContent: 'space-between',
               }}
             >
-              <Text style={{ fontSize: 14 }}>
-                {this.userName()}
-              </Text>
-              <Text style={{ fontSize: 14 }}>
+              {this.userName()}
+              <Text
+                style={{
+                  fontSize: 14,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
                 {this.localCreatedAt()}
               </Text>
             </View>
