@@ -51,7 +51,6 @@ export default class Profile extends Component {
         <View
           style={{
             paddingHorizontal: 10,
-            flex: 1,
             paddingTop: 50,
           }}
         >
