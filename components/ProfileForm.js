@@ -1,15 +1,19 @@
 /* @flow */
 import React, { Component } from 'react';
-import {
+import ReactNative, {
   Text,
   Image,
   ActivityIndicator,
   ListView,
   View,
-  ScrollView,
   TouchableHighlight,
+  Platform,
+  ScrollView,
 } from 'react-native';
 import { Icon, Avatar, Button } from 'react-native-elements';
+import {
+  KeyboardAwareScrollView,
+} from 'react-native-keyboard-aware-scrollview';
 import headerStyle from './headerStyle.js';
 import FieldContainer from './FieldContainer';
 import ProfileHeaderRight from './ProfileHeaderRight';
@@ -27,6 +31,14 @@ export default class Profile extends Component {
     profileForm: ProfileFormState,
     currentUser: CurrentUserState,
     actions: ProfileFormActions,
+  };
+
+  state: {
+    marginTop: number,
+  };
+
+  state = {
+    marginTop: 0,
   };
 
   static navigationOptions = ({ screenProps, navigation }) => ({
@@ -77,56 +89,55 @@ export default class Profile extends Component {
     return null;
   }
 
+  onFocus() {
+    if (Platform.OS === 'android') this.setState({ marginTop: -200 });
+  }
+
+  onBlur() {
+    if (Platform.OS === 'android') this.setState({ marginTop: 0 });
+  }
+
   render() {
     const { profileForm } = this.props;
     return (
-      <ScrollView
-        style={{
-          flex: 1,
-        }}
-      >
+      <KeyboardAwareScrollView style={{ marginTop: this.state.marginTop }}>
         <FieldContainer label="写真">
-          <View
+          <TouchableHighlight
             style={{
-              paddingHorizontal: 10,
-              flex: 1,
+              height: 150,
+              width: 150,
+              alignSelf: 'center',
             }}
+            onPress={this.pickImage}
+            underlayColor="transparent"
+            activeOpacity={0.7}
           >
-            <TouchableHighlight
-              style={{
-                height: 150,
-                width: 150,
-                alignSelf: 'center',
-              }}
-              onPress={this.pickImage}
-              underlayColor="transparent"
-              activeOpacity={0.7}
-            >
-              <View>
-                {this.imageUrl() !== null
-                  ? <Image
-                      style={{
-                        width: 150,
-                        height: 150,
-                        borderRadius: 75,
-                        alignSelf: 'center',
-                      }}
-                      source={{ uri: this.imageUrl() }}
-                    />
-                  : <Image
-                      style={{
-                        width: 150,
-                        height: 150,
-                        borderRadius: 75,
-                        alignSelf: 'center',
-                      }}
-                      source={require('./no_image.png')}
-                    />}
-              </View>
-            </TouchableHighlight>
-          </View>
+            <View>
+              {this.imageUrl() !== null
+                ? <Image
+                    style={{
+                      width: 150,
+                      height: 150,
+                      borderRadius: 75,
+                      alignSelf: 'center',
+                    }}
+                    source={{ uri: this.imageUrl() }}
+                  />
+                : <Image
+                    style={{
+                      width: 150,
+                      height: 150,
+                      borderRadius: 75,
+                      alignSelf: 'center',
+                    }}
+                    source={require('./no_image.png')}
+                  />}
+            </View>
+          </TouchableHighlight>
         </FieldContainer>
         <Field
+          onFocus={this.onFocus.bind(this)}
+          onBlur={this.onBlur.bind(this)}
           label="名前"
           fieldValue={this.props.profileForm.name}
           onChange={this.props.actions.handleChangeName}
@@ -138,7 +149,7 @@ export default class Profile extends Component {
             onPress={this.props.actions.updateProfile}
           />
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
   }
 }

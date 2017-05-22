@@ -39,6 +39,8 @@ export default class Field extends React.Component {
     const {
       fieldValue,
       onChange,
+      onFocus,
+      onBlur,
       label,
       multiline,
       placeholder,
@@ -64,6 +66,8 @@ export default class Field extends React.Component {
               this.setState({ height: event.nativeEvent.contentSize.height });
             }
           }}
+          onFocus={onFocus}
+          onBlur={onBlur}
           onContentSizeChange={event => {
             this.setState({ height: event.nativeEvent.contentSize.height });
           }}
