@@ -71,7 +71,10 @@ export default class Profile extends Component {
     if (profileForm.image) {
       return profileForm.image.uri;
     }
-    return currentUser.imageUrl;
+    if (currentUser.imageUrl && currentUser.imageUrl.length !== 0) {
+      return currentUser.imageUrl;
+    }
+    return null;
   }
 
   render() {
@@ -100,19 +103,24 @@ export default class Profile extends Component {
               activeOpacity={0.7}
             >
               <View>
-                {this.imageUrl() == null
-                  ? <Avatar
-                      xlarge
-                      rounded
-                      icon={{ name: 'camera-alt' }}
-                      activeOpacity={0.7}
-                    />
-                  : <Avatar
-                      xlarge
-                      rounded
+                {this.imageUrl() !== null
+                  ? <Image
+                      style={{
+                        width: 150,
+                        height: 150,
+                        borderRadius: 75,
+                        alignSelf: 'center',
+                      }}
                       source={{ uri: this.imageUrl() }}
-                      icon={{ name: 'camera-alt' }}
-                      activeOpacity={0.7}
+                    />
+                  : <Image
+                      style={{
+                        width: 150,
+                        height: 150,
+                        borderRadius: 75,
+                        alignSelf: 'center',
+                      }}
+                      source={require('./no_image.png')}
                     />}
               </View>
             </TouchableHighlight>

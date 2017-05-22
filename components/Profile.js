@@ -1,6 +1,6 @@
 /* @flow */
 import React, { Component } from 'react';
-import { Text, Image, ActivityIndicator, View, ScrollView } from 'react-native';
+import { Text, Image, ActivityIndicator, View } from 'react-native';
 import { Icon, Avatar } from 'react-native-elements';
 import headerStyle from './headerStyle.js';
 import ProfileHeaderRight from './ProfileHeaderRight';
@@ -34,8 +34,15 @@ export default class Profile extends Component {
 
   render() {
     const { currentUser } = this.props;
+    const imageUrl = (): ?string => {
+      const imageUrl = currentUser.imageUrl;
+      if (imageUrl && imageUrl.length !== 0) {
+        return imageUrl;
+      }
+      return null;
+    };
     return (
-      <ScrollView
+      <View
         style={{
           flex: 1,
           backgroundColor: 'white',
@@ -48,27 +55,25 @@ export default class Profile extends Component {
             paddingTop: 50,
           }}
         >
-          <View
-            style={{
-              height: 150,
-              width: 150,
-              alignSelf: 'center',
-            }}
-          >
-            {currentUser.imageUrl == null
-              ? <Avatar
-                  xlarge
-                  rounded
-                  icon={{ name: 'camera-alt' }}
-                  activeOpacity={1}
-                />
-              : <Avatar
-                  xlarge
-                  rounded
-                  source={{ uri: currentUser.imageUrl }}
-                  activeOpacity={1}
-                />}
-          </View>
+          {imageUrl() !== null
+            ? <Image
+                style={{
+                  width: 150,
+                  height: 150,
+                  borderRadius: 75,
+                  alignSelf: 'center',
+                }}
+                source={{ uri: imageUrl() }}
+              />
+            : <Image
+                style={{
+                  width: 150,
+                  height: 150,
+                  borderRadius: 75,
+                  alignSelf: 'center',
+                }}
+                source={require('./no_image.png')}
+              />}
         </View>
         <Text
           style={{
@@ -81,7 +86,7 @@ export default class Profile extends Component {
         >
           {currentUser.name}
         </Text>
-      </ScrollView>
+      </View>
     );
   }
 }
