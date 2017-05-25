@@ -15,6 +15,7 @@ type navigationProps = {
 };
 
 export type DiaryEntryFormActions = {
+  setDiaryEntryForm: number => Promise<any>,
   createDiaryEntry: () => Promise<any>,
   handleChangeTitle: (title: string) => void,
   handleChangeBody: (body: string) => void,
@@ -39,12 +40,25 @@ export type DiaryEntryFormActions = {
 export default connect(
   (state: ReduxState) => ({
     diaryEntryForm: state.diaryEntryForm,
+    diaryEntry: state.diaryEntry,
   }),
   (
     dispatch: Dispatch,
     ownProps: navigationProps,
   ): { actions: DiaryEntryFormActions } => ({
     actions: {
+      setDiaryEntryForm: async (id: number) => {
+        const Api = new ApiClient(store.getState().sessionToken);
+        const diaryEntry = await Api.getDiaryEntry(id);
+        dispatch(
+          Actions.handleChangeDiaryEntry({
+            title: diaryEntry.title,
+            body: diaryEntry.body,
+            emoji: diaryEntry.emoji,
+          }),
+        );
+        dispatch(Actions.setDiaryEntry(diaryEntry));
+      },
       createDiaryEntry: async () => {
         const Api = new ApiClient(store.getState().sessionToken);
         const diaryEntryForm = store.getState().diaryEntryForm;

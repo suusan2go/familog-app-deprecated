@@ -23,6 +23,7 @@ import headerStyle from './headerStyle.js';
 import Spinner from 'react-native-loading-spinner-overlay';
 import type { DiaryEntryFormState } from '../reducers/diaryEntryForm';
 import type { DiaryEntryFormActions } from '../containers/DiaryEntryForm';
+import type { DiaryEntryPathParams } from './DiaryEntryListItem';
 
 const buttons = [
   {
@@ -73,6 +74,12 @@ export default class DiaryEntryForm extends React.Component {
   props: {
     diaryEntryForm: DiaryEntryFormState,
     actions: DiaryEntryFormActions,
+    navigation: {
+      navigate: () => void,
+      state: {
+        params: DiaryEntryPathParams,
+      },
+    },
   };
 
   static navigationOptions = ({ navigation }) => ({
@@ -88,6 +95,14 @@ export default class DiaryEntryForm extends React.Component {
       />
     ),
   });
+
+  componentWillMount() {
+    const id =
+      this.props.navigation.state.params &&
+      this.props.navigation.state.params.id;
+    if (!id) return;
+    this.props.actions.setDiaryEntryForm(id);
+  }
 
   isDisabled(): boolean {
     return (
