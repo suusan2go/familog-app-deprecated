@@ -19,6 +19,7 @@ import FieldContainer from './FieldContainer';
 import ProfileHeaderRight from './ProfileHeaderRight';
 import Field from './Field';
 import { ImagePicker } from 'expo';
+import Spinner from 'react-native-loading-spinner-overlay';
 import type { ProfileFormState } from '../reducers/profileForm';
 import type { CurrentUserState } from '../reducers/currentUser';
 import type { ProfileFormActions } from '../containers/ProfileForm';
@@ -101,6 +102,10 @@ export default class Profile extends Component {
     const { profileForm } = this.props;
     return (
       <KeyboardAwareScrollView style={{ marginTop: this.state.marginTop }}>
+        <Spinner
+          visible={profileForm.isSubmitting}
+          textStyle={{ color: 'mediumseagreen' }}
+        />
         <FieldContainer label="写真">
           <TouchableHighlight
             style={{

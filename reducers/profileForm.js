@@ -13,6 +13,7 @@ export type ProfileFormState = {
     name: string,
     type: string,
   },
+  isSubmitting: false,
 };
 
 // reducer
@@ -20,6 +21,7 @@ export default (
   state: ProfileFormState = {
     name: '',
     image: null,
+    isSubmitting: false,
   },
   action:
     | UpdateProfileStartAction
