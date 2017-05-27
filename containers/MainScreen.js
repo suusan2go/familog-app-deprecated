@@ -12,6 +12,8 @@ const DEVICE_TOKEN_KEY = '@DeviceToken:key';
 export default connect(
   (store: ReduxState) => ({
     showInvitation: store.currentDiary !== null,
+    isDiaryEntryEditable: store.diaryEntry &&
+      store.diaryEntry.user.id === store.currentUser.id,
   }),
   (dispatch: Dispatch) => ({
     actions: {

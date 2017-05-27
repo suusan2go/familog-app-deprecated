@@ -82,7 +82,7 @@ export default class DiaryEntryForm extends React.Component {
     },
   };
 
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = ({ navigation, screenProps }) => ({
     title: '日記を書く',
     headerTintColor: 'mediumseagreen',
     headerStyle: headerStyle.container,

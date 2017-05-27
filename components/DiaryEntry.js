@@ -12,6 +12,7 @@ import headerStyle from './headerStyle.js';
 import Spinner from 'react-native-loading-spinner-overlay';
 import DiaryEntryImages from './DiaryEntryImages';
 import moment from 'moment';
+import DiaryEntryHeaderRight from './DiaryEntryHeaderRight';
 import type { DiaryEntryPathParams } from './DiaryEntryListItem';
 import type { DiaryEntryState } from '../reducers/diaryEntryList';
 import type { DiaryEntryActions } from '../containers/DiaryEntry';
@@ -28,12 +29,18 @@ export default class DiaryEntry extends Component {
     actions: DiaryEntryActions,
   };
 
-  static navigationOptions = {
+  static navigationOptions = ({ navigation, screenProps }) => ({
     title: '',
     headerTitle: null,
     headerTintColor: 'mediumseagreen',
     headerStyle: headerStyle.container,
-  };
+    headerRight: (
+      <DiaryEntryHeaderRight
+        navigation={navigation}
+        isDiaryEntryEditable={screenProps.isDiaryEntryEditable}
+      />
+    ),
+  });
 
   localCreatedAt() {
     if (this.props.diaryEntry === null) return;
