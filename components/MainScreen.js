@@ -22,6 +22,7 @@ const MainScreen = StackNavigator({
 export default class MainScreenApp extends React.Component {
   props: {
     showInvitation: boolean,
+    isDiaryEntryEditable: boolean,
     actions: {
       setupApp: Action,
     },
@@ -36,7 +37,10 @@ export default class MainScreenApp extends React.Component {
       <View style={{ flex: 1 }}>
         <StatusBar barStyle="dark-content" />
         <MainScreen
-          screenProps={{ showInvitation: this.props.showInvitation }}
+          screenProps={{
+            showInvitation: this.props.showInvitation,
+            isDiaryEntryEditable: this.props.isDiaryEntryEditable,
+          }}
         />
       </View>
     );

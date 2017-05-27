@@ -12,8 +12,9 @@ export default class DiaryEntryHeaderRight extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const { navigate } = this.props.navigation;
-    return true
+    return this.props.isDiaryEntryEditable
       ? <Text
           style={headerStyle.right}
           activeOpacity={0.7}
