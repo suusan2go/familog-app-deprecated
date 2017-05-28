@@ -12,6 +12,7 @@ export default class FieldImage extends React.Component {
       name: string,
       type: string,
     }) => void,
+    onDelete: () => void,
   };
 
   imageUrl() {
@@ -44,7 +45,13 @@ export default class FieldImage extends React.Component {
                   uri: imageUrl,
                 }}
                 style={{ flex: 1, minWidth: 100, height: 100 }}
-              />
+              >
+                <Icon
+                  name="close"
+                  style={{ alignSelf: 'flex-end' }}
+                  onPress={this.props.onDelete}
+                />
+              </Image>
             : <Icon name="image" />}
         </View>
       </TouchableHighlight>
