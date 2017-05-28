@@ -184,7 +184,7 @@ export default class DiaryEntryForm extends React.Component {
             title="保存する"
             backgroundColor="limegreen"
             disabled={this.isDisabled()}
-            onPress={this.props.actions.createDiaryEntry}
+            onPress={this.props.actions.submitDiaryEntry}
           />
         </View>
       </KeyboardAwareScrollView>

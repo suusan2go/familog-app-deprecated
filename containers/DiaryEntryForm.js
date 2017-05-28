@@ -16,7 +16,7 @@ type navigationProps = {
 
 export type DiaryEntryFormActions = {
   setDiaryEntryForm: number => Promise<any>,
-  createDiaryEntry: () => Promise<any>,
+  submitDiaryEntry: () => Promise<any>,
   resetForm: () => void,
   handleChangeTitle: (title: string) => void,
   handleChangeBody: (body: string) => void,
@@ -56,6 +56,7 @@ export default connect(
         const diaryEntry = await Api.getDiaryEntry(id);
         dispatch(
           Actions.handleChangeDiaryEntry({
+            id: diaryEntry.id,
             title: diaryEntry.title,
             body: diaryEntry.body,
             emoji: diaryEntry.emoji,
@@ -79,9 +80,8 @@ export default connect(
               : null,
           }),
         );
-        dispatch(Actions.setDiaryEntry(diaryEntry));
       },
-      createDiaryEntry: async () => {
+      submitDiaryEntry: async () => {
         const Api = new ApiClient(store.getState().sessionToken);
         const diaryEntryForm = store.getState().diaryEntryForm;
         const currentDiary = store.getState().currentDiary;
@@ -89,10 +89,15 @@ export default connect(
         if (currentDiary === null) return;
         dispatch(Actions.createDiaryEntryStart());
         try {
-          const diaryEntry = await Api.createDiaryEntry(
-            diaryEntryForm,
-            currentDiary.id,
-          );
+          if (diaryEntryForm.id) {
+            const diaryEntry = await Api.updateDiaryEntry(
+              diaryEntryForm,
+              diaryEntryForm.id,
+            );
+            dispatch(Actions.setDiaryEntry(diaryEntry));
+          } else {
+            await Api.createDiaryEntry(diaryEntryForm, currentDiary.id);
+          }
           dispatch(Actions.createDiaryEntrySuccess());
           ownProps.navigation.goBack();
           const diaryEntryList = await Api.getMoreNewerDiaryEntries(

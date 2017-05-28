@@ -47,6 +47,15 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async updateDiaryEntry(body: DiaryEntryFormState, diaryEntryID: number) {
+    const response: Response = await this.patchWithFile(
+      url.DIARY_ENTRY_URL(diaryEntryID),
+      body,
+    );
+    const responseJson = await response.json();
+    return responseJson;
+  }
+
   async getDiaryEntries(
     diaryID: number,
     queryParams?: { maxID?: number, sinceID?: number },

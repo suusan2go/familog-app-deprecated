@@ -142,6 +142,7 @@ export type HandleChangeDiaryEntryAction = {
   payload: any,
 };
 export const handleChangeDiaryEntry = (payload: {|
+  id?: number,
   title?: string,
   body?: string,
   emoji?: string,
