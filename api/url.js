@@ -9,6 +9,11 @@ export const DIARY_ENTRIES_URL = (diaryID: number): string =>
   `${HOST}/diaries/${diaryID}/diary_entries`;
 export const DIARY_ENTRY_URL = (diaryEntryID: number): string =>
   `${HOST}/diary_entries/${diaryEntryID}`;
+export const DIARY_ENTRY_IMAGE_URL = (
+  diaryEntryID: number,
+  diaryEntryImageID: number,
+): string =>
+  `${HOST}/diary_entries/${diaryEntryID}/images/${diaryEntryImageID}`;
 export const DIARY_INVITATION_URL = (diaryID: number): string =>
   `${HOST}/diaries/${diaryID}/invitation`;
 export const DIARY_INVITATION_VERIFICATION_URL = `${HOST}/diary_invitation_verifications`;

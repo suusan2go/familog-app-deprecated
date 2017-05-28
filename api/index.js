@@ -56,6 +56,13 @@ export default class ApiClient {
     return responseJson;
   }
 
+  async deleteDiaryEntryImage(diaryEntryID: number, diaryEntryImageID: number) {
+    const response: Response = await this.delete(
+      url.DIARY_ENTRY_IMAGE_URL(diaryEntryID, diaryEntryImageID),
+    );
+    return {};
+  }
+
   async getDiaryEntries(
     diaryID: number,
     queryParams?: { maxID?: number, sinceID?: number },
@@ -197,6 +204,25 @@ export default class ApiClient {
       : url;
     return fetch(urlWithQueryString, {
       method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: this.sessionToken,
+      },
+    }).then(response => {
+      if (!response.ok) {
+        throw Error(response);
+      }
+      return response;
+    });
+  }
+
+  delete(url: string, queryParams?: any) {
+    const urlWithQueryString = queryParams
+      ? `${url}?${qs.stringify(queryParams)}`
+      : url;
+    return fetch(urlWithQueryString, {
+      method: 'DELETE',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
