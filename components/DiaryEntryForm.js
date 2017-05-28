@@ -159,6 +159,7 @@ export default class DiaryEntryForm extends React.Component {
                   (this.props.diaryEntryForm.image1.uri ||
                     this.props.diaryEntryForm.image1.defaultUri)
               }
+              onDelete={this.props.actions.deleteImage1}
               onChange={this.props.actions.handleChangeImage1}
             />
             <ImageField
@@ -167,6 +168,7 @@ export default class DiaryEntryForm extends React.Component {
                   (this.props.diaryEntryForm.image2.uri ||
                     this.props.diaryEntryForm.image2.defaultUri)
               }
+              onDelete={this.props.actions.deleteImage2}
               onChange={this.props.actions.handleChangeImage2}
             />
             <ImageField
@@ -175,6 +177,7 @@ export default class DiaryEntryForm extends React.Component {
                   (this.props.diaryEntryForm.image3.uri ||
                     this.props.diaryEntryForm.image3.defaultUri)
               }
+              onDelete={this.props.actions.deleteImage3}
               onChange={this.props.actions.handleChangeImage3}
             />
           </View>

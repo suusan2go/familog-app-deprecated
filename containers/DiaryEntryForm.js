@@ -36,6 +36,9 @@ export type DiaryEntryFormActions = {
     name: string,
     type: string,
   }) => void,
+  deleteImage1: () => Promise<any>,
+  deleteImage2: () => Promise<any>,
+  deleteImage3: () => Promise<any>,
 };
 
 export default connect(
@@ -130,6 +133,69 @@ export default connect(
       },
       handleChangeImage3: image3 => {
         dispatch(Actions.handleChangeDiaryEntry({ image3 }));
+      },
+      deleteImage1: async () => {
+        const Api = new ApiClient(store.getState().sessionToken);
+        const {
+          diaryEntryForm: { id, image1, image2, image3 },
+        } = store.getState();
+        try {
+          dispatch(
+            Actions.handleChangeDiaryEntry({
+              image1: image2,
+              image2: image3,
+              image3: null,
+            }),
+          );
+          if (id && image1 && image1.id) {
+            await Api.deleteDiaryEntryImage(id, image1.id);
+          }
+        } catch (e) {
+          console.error(e);
+          return dispatch(
+            Actions.handleChangeDiaryEntry({
+              image1,
+              image2,
+              image3,
+            }),
+          );
+        }
+      },
+      deleteImage2: async () => {
+        const Api = new ApiClient(store.getState().sessionToken);
+        const { diaryEntryForm: { id, image2, image3 } } = store.getState();
+        try {
+          dispatch(
+            Actions.handleChangeDiaryEntry({
+              image2: image3,
+              image3: null,
+            }),
+          );
+          if (id && image2 && image2.id) {
+            await Api.deleteDiaryEntryImage(id, image2.id);
+          }
+        } catch (e) {
+          console.error(e);
+          return dispatch(
+            Actions.handleChangeDiaryEntry({
+              image2,
+              image3,
+            }),
+          );
+        }
+      },
+      deleteImage3: async () => {
+        const { diaryEntryForm: { id, image3 } } = store.getState();
+        const Api = new ApiClient(store.getState().sessionToken);
+        try {
+          dispatch(Actions.handleChangeDiaryEntry({ image3: null }));
+          if (id && image3 && image3.id) {
+            await Api.deleteDiaryEntryImage(id, image3.id);
+          }
+        } catch (e) {
+          console.error(e);
+          return dispatch(Actions.handleChangeDiaryEntry({ image3 }));
+        }
       },
     },
   }),
