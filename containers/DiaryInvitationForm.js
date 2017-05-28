@@ -24,7 +24,7 @@ export default connect(
           dispatch(Actions.setCurrentDiary(diary));
         } catch (error) {
           // TODO: error handling
-          console.log(error);
+          console.error(error);
         }
       },
     },

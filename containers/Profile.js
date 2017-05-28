@@ -24,7 +24,7 @@ export default connect(
           const user = await Api.getCurrentUser();
           dispatch(Actions.setCurrentUser(user));
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       },
     },
