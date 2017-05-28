@@ -17,6 +17,7 @@ type navigationProps = {
 export type DiaryEntryFormActions = {
   setDiaryEntryForm: number => Promise<any>,
   createDiaryEntry: () => Promise<any>,
+  resetForm: () => void,
   handleChangeTitle: (title: string) => void,
   handleChangeBody: (body: string) => void,
   handleChangeEmoji: (emoji: string) => void,
@@ -47,6 +48,9 @@ export default connect(
     ownProps: navigationProps,
   ): { actions: DiaryEntryFormActions } => ({
     actions: {
+      resetForm: () => {
+        dispatch(Actions.createDiaryEntrySuccess());
+      },
       setDiaryEntryForm: async (id: number) => {
         const Api = new ApiClient(store.getState().sessionToken);
         const diaryEntry = await Api.getDiaryEntry(id);
@@ -55,6 +59,24 @@ export default connect(
             title: diaryEntry.title,
             body: diaryEntry.body,
             emoji: diaryEntry.emoji,
+            image1: diaryEntry.diaryEntryImages[0]
+              ? {
+                  id: diaryEntry.diaryEntryImages[0].id,
+                  defaultUri: diaryEntry.diaryEntryImages[0].uri,
+                }
+              : null,
+            image2: diaryEntry.diaryEntryImages[1]
+              ? {
+                  id: diaryEntry.diaryEntryImages[1].id,
+                  defaultUri: diaryEntry.diaryEntryImages[1].uri,
+                }
+              : null,
+            image3: diaryEntry.diaryEntryImages[2]
+              ? {
+                  id: diaryEntry.diaryEntryImages[2].id,
+                  defaultUri: diaryEntry.diaryEntryImages[2].uri,
+                }
+              : null,
           }),
         );
         dispatch(Actions.setDiaryEntry(diaryEntry));

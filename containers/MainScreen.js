@@ -14,6 +14,7 @@ export default connect(
     showInvitation: store.currentDiary !== null,
     isDiaryEntryEditable: store.diaryEntry &&
       store.diaryEntry.user.id === store.currentUser.id,
+    diaryEntry: store.diaryEntry,
   }),
   (dispatch: Dispatch) => ({
     actions: {

@@ -104,6 +104,10 @@ export default class DiaryEntryForm extends React.Component {
     this.props.actions.setDiaryEntryForm(id);
   }
 
+  componentWillUnmount() {
+    this.props.actions.resetForm();
+  }
+
   isDisabled(): boolean {
     return (
       this.props.diaryEntryForm.isSubmitting ||
@@ -152,21 +156,24 @@ export default class DiaryEntryForm extends React.Component {
             <ImageField
               imageUrl={
                 this.props.diaryEntryForm.image1 &&
-                  this.props.diaryEntryForm.image1.uri
+                  (this.props.diaryEntryForm.image1.uri ||
+                    this.props.diaryEntryForm.image1.defaultUri)
               }
               onChange={this.props.actions.handleChangeImage1}
             />
             <ImageField
               imageUrl={
                 this.props.diaryEntryForm.image2 &&
-                  this.props.diaryEntryForm.image2.uri
+                  (this.props.diaryEntryForm.image2.uri ||
+                    this.props.diaryEntryForm.image2.defaultUri)
               }
               onChange={this.props.actions.handleChangeImage2}
             />
             <ImageField
               imageUrl={
                 this.props.diaryEntryForm.image3 &&
-                  this.props.diaryEntryForm.image3.uri
+                  (this.props.diaryEntryForm.image3.uri ||
+                    this.props.diaryEntryForm.image3.defaultUri)
               }
               onChange={this.props.actions.handleChangeImage3}
             />

@@ -14,6 +14,14 @@ export default class FieldImage extends React.Component {
     }) => void,
   };
 
+  imageUrl() {
+    const { imageUrl } = this.props;
+    if (imageUrl) {
+      return imageUrl;
+    }
+    return null;
+  }
+
   render() {
     const { imageUrl } = this.props;
     return (
@@ -30,7 +38,7 @@ export default class FieldImage extends React.Component {
             height: 100,
           }}
         >
-          {imageUrl !== null
+          {this.imageUrl() !== null
             ? <Image
                 source={{
                   uri: imageUrl,

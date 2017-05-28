@@ -5,6 +5,7 @@ import DiaryEntry from '../containers/DiaryEntry.js';
 import DiaryEntryForm from '../containers/DiaryEntryForm.js';
 import HomeScreen from './HomeScreen.js';
 import ProfileForm from '../containers/ProfileForm.js';
+import type { DiaryEntryState } from '../reducers/diaryEntry';
 
 const MainScreen = StackNavigator({
   Home: { screen: HomeScreen },
@@ -23,6 +24,7 @@ export default class MainScreenApp extends React.Component {
   props: {
     showInvitation: boolean,
     isDiaryEntryEditable: boolean,
+    diaryEntry: DiaryEntryState,
     actions: {
       setupApp: Action,
     },
@@ -40,6 +42,7 @@ export default class MainScreenApp extends React.Component {
           screenProps={{
             showInvitation: this.props.showInvitation,
             isDiaryEntryEditable: this.props.isDiaryEntryEditable,
+            diaryEntry: this.props.diaryEntry,
           }}
         />
       </View>

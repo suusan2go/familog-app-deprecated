@@ -2,6 +2,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import headerStyle from './headerStyle.js';
+import type { DiaryEntryState } from '../reducers/diaryEntry';
 
 export default class DiaryEntryHeaderRight extends React.Component {
   props: {
@@ -9,16 +10,19 @@ export default class DiaryEntryHeaderRight extends React.Component {
       navigate: (screenName: string) => void,
     },
     isDiaryEntryEditable: boolean,
+    diaryEntry: DiaryEntryState,
   };
 
   render() {
-    console.log(this.props);
     const { navigate } = this.props.navigation;
     return this.props.isDiaryEntryEditable
       ? <Text
           style={headerStyle.right}
           activeOpacity={0.7}
-          onPress={() => navigate('DiaryEntryForm')}
+          onPress={() =>
+            navigate('DiaryEntryForm', {
+              id: this.props.diaryEntry && this.props.diaryEntry.id,
+            })}
         >
           編集
         </Text>

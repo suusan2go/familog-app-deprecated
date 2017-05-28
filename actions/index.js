@@ -145,9 +145,19 @@ export const handleChangeDiaryEntry = (payload: {|
   title?: string,
   body?: string,
   emoji?: string,
-  image1?: { uri: string, name: string, type: string },
-  image2?: { uri: string, name: string, type: string },
-  image3?: { uri: string, name: string, type: string },
+  currentImages?: Array<string>,
+  image1?:
+    | null
+    | { uri: string, name: string, type: string }
+    | { id: string, defaultUri: string },
+  image2?:
+    | null
+    | { uri: string, name: string, type: string }
+    | { id: string, defaultUri: string },
+  image3?:
+    | null
+    | { uri: string, name: string, type: string }
+    | { id: string, defaultUri: string },
 |}): HandleChangeDiaryEntryAction => ({
   type: HANDLE_CHANGE_DIARY_ENTRY,
   payload: payload,

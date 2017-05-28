@@ -7,21 +7,28 @@ import type {
 } from '../actions';
 
 export type DiaryEntryFormState = {
+  id: ?number,
   title: string,
   body: string,
   emoji: string,
   image1: ?{
+    id: ?number,
+    defaultUri: ?string,
     uri: string,
     name: string,
     type: string,
   },
   image2: ?{
+    id: ?number,
+    defaultUri: ?string,
     uri: string,
     name: string,
     type: string,
   },
   image3: ?{
+    id: ?number,
     uri: string,
+    defaultUri: ?string,
     name: string,
     type: string,
   },
@@ -29,6 +36,7 @@ export type DiaryEntryFormState = {
 };
 
 const initialState = {
+  id: null,
   title: '',
   body: '',
   emoji: 'smile',

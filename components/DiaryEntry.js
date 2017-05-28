@@ -36,6 +36,7 @@ export default class DiaryEntry extends Component {
     headerStyle: headerStyle.container,
     headerRight: (
       <DiaryEntryHeaderRight
+        diaryEntry={screenProps.diaryEntry}
         navigation={navigation}
         isDiaryEntryEditable={screenProps.isDiaryEntryEditable}
       />
