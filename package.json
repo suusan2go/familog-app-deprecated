@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@moqada/rn-twemoji": "^0.2.1",
+    "bugsnag-react-native": "^2.2.3",
     "crypto-browserify": "^3.11.0",
     "expo": "^16.0.0",
     "flow-bin": "0.45.0",
