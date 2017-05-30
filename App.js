@@ -8,12 +8,6 @@ import store from './store';
 import AppConfig from './config.json';
 import { Client, Configuration } from 'bugsnag-react-native';
 
-if (!__DEV__) {
-  const configuration = new Configuration();
-  configuration.apiKey = AppConfig.bugsnapKey;
-  const client = new Client(configuration);
-}
-
 const App = () => (
   <Provider store={store}>
     <MainScreen />
