@@ -100,7 +100,7 @@ class DiaryEntryListItem extends Component {
             source={
               diaryEntry.diaryEntryImages
                 ? { uri: diaryEntry.diaryEntryImages[0].uri }
-                : require('./photo01.jpg')
+                : require('./no_image.jpg')
             }
           >
             {diaryEntry.emoji !== null &&
