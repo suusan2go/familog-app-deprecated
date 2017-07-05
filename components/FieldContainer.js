@@ -12,6 +12,12 @@ import {
 } from 'react-native';
 
 export default class FieldContainer extends React.Component {
+  props: {
+    label: String,
+    containerStyle?: Object,
+    children?: any,
+  };
+
   render() {
     const { label, containerStyle } = this.props;
     return (
