@@ -12,9 +12,10 @@ const DEVICE_TOKEN_KEY = '@DeviceToken:key';
 export default connect(
   (store: ReduxState) => ({
     showInvitation: store.currentDiary !== null,
-    isDiaryEntryEditable: store.diaryEntry &&
-      store.diaryEntry.user.id === store.currentUser.id,
+    isDiaryEntryEditable:
+      store.diaryEntry && store.diaryEntry.user.id === store.currentUser.id,
     diaryEntry: store.diaryEntry,
+    initialLoading: store.appState.isInitialLoading,
   }),
   (dispatch: Dispatch) => ({
     actions: {
@@ -62,6 +63,7 @@ export default connect(
           Permissions.REMOTE_NOTIFICATIONS,
         );
 
+        dispatch(Actions.initialLoadingComplete());
         // Stop here if the user did not grant permissions
         if (status !== 'granted') {
           return;

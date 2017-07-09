@@ -1,6 +1,7 @@
 import React from 'react';
 import { Linking, View, StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { AppLoading } from 'expo';
 import DiaryEntry from '../containers/DiaryEntry.js';
 import DiaryEntryForm from '../containers/DiaryEntryForm.js';
 import HomeScreen from './HomeScreen.js';
@@ -24,6 +25,7 @@ export default class MainScreenApp extends React.Component {
   props: {
     showInvitation: boolean,
     isDiaryEntryEditable: boolean,
+    isInitialLoading: boolean,
     diaryEntry: DiaryEntryState,
     actions: {
       setupApp: Action,
@@ -35,6 +37,10 @@ export default class MainScreenApp extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+    if (this.props.isInitialLoading) {
+      return <AppLoading />;
+    }
     return (
       <View style={{ flex: 1 }}>
         <StatusBar barStyle="dark-content" />

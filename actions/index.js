@@ -275,6 +275,15 @@ export const handleChangeProfile = (payload: {
   payload: payload,
 });
 
+// InitialLoading
+export const INITIAL_LOADING_COMPLETE = 'INITIAL_LOADING_COMPLETE';
+export type InitialLoadingCompleteAction = {
+  type: typeof INITIAL_LOADING_COMPLETE,
+};
+export const initialLoadingComplete = (): InitialLoadingCompleteAction => ({
+  type: INITIAL_LOADING_COMPLETE,
+});
+
 export type ActionTypes =
   | SetDiaryInvitationAction
   | SetDiaryEntryAction

@@ -5,13 +5,11 @@ import type {
   SetDiaryInvitationAction,
 } from '../actions';
 
-export type CurrentDiaryState =
-  | {
-      id: number,
-      title: string,
-      invitationCode?: string,
-    }
-  | null;
+export type CurrentDiaryState = {
+  id: number,
+  title: string,
+  invitationCode?: string,
+} | null;
 
 // reducer
 export default (
