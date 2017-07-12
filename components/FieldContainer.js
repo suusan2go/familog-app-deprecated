@@ -13,7 +13,7 @@ import {
 
 export default class FieldContainer extends React.Component {
   props: {
-    label: String,
+    label: string,
     containerStyle?: Object,
     children?: any,
   };

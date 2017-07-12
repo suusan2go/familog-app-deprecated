@@ -17,7 +17,7 @@ import headerStyle from './headerStyle.js';
 export default class DiaryInvitationForm extends React.Component {
   props: {
     actions: {
-      verifyInvitationCode: () => void,
+      verifyInvitationCode: (invitationCode?: string) => void,
     },
   };
 

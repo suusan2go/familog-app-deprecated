@@ -35,7 +35,7 @@ class DiaryEntryListItem extends Component {
       case 'smile':
         return (
           <Image
-            source={require(`@moqada/rn-twemoji/n/smile`)}
+            source={require('@moqada/rn-twemoji/n/smile')}
             style={{
               height: 25,
               width: 25,
@@ -49,7 +49,7 @@ class DiaryEntryListItem extends Component {
       case 'tired_face':
         return (
           <Image
-            source={require(`@moqada/rn-twemoji/n/tired_face`)}
+            source={require('@moqada/rn-twemoji/n/tired_face')}
             style={{
               height: 25,
               width: 25,
@@ -63,7 +63,7 @@ class DiaryEntryListItem extends Component {
       case 'cry':
         return (
           <Image
-            source={require(`@moqada/rn-twemoji/n/cry`)}
+            source={require('@moqada/rn-twemoji/n/cry')}
             style={{
               height: 25,
               width: 25,

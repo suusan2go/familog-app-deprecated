@@ -21,7 +21,7 @@ export default class DiaryForm extends React.Component {
       isSubmitting: boolean,
     },
     actions: {
-      createDiary: () => void,
+      createDiary: ({ title: string }) => void,
       handleChangeTitle: (value: string) => void,
     },
   };

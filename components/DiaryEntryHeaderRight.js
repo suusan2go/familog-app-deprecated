@@ -7,7 +7,7 @@ import type { DiaryEntryState } from '../reducers/diaryEntry';
 export default class DiaryEntryHeaderRight extends React.Component {
   props: {
     navigation: {
-      navigate: (screenName: string) => void,
+      navigate: (screenName: string, options: Object) => void,
     },
     isDiaryEntryEditable: boolean,
     diaryEntry: DiaryEntryState,
