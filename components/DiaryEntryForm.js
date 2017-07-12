@@ -11,9 +11,7 @@ import {
   findNodeHandle,
 } from 'react-native';
 //import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import {
-  KeyboardAwareScrollView,
-} from 'react-native-keyboard-aware-scrollview';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import { Button, ButtonGroup } from 'react-native-elements';
 import { Icon } from 'react-native-elements';
 import Field from './Field.js';
@@ -27,7 +25,7 @@ import type { DiaryEntryPathParams } from './DiaryEntryListItem';
 
 const buttons = [
   {
-    element: () => (
+    element: () =>
       <Image
         source={require(`@moqada/rn-twemoji/n/smile`)}
         style={{
@@ -36,12 +34,11 @@ const buttons = [
           marginRight: 10,
           backgroundColor: 'transparent',
         }}
-      />
-    ),
+      />,
     name: 'smile',
   },
   {
-    element: () => (
+    element: () =>
       <Image
         source={require(`@moqada/rn-twemoji/n/tired_face`)}
         style={{
@@ -50,12 +47,11 @@ const buttons = [
           marginRight: 10,
           backgroundColor: 'transparent',
         }}
-      />
-    ),
+      />,
     name: 'tired_face',
   },
   {
-    element: () => (
+    element: () =>
       <Image
         source={require(`@moqada/rn-twemoji/n/cry`)}
         style={{
@@ -64,8 +60,7 @@ const buttons = [
           marginRight: 10,
           backgroundColor: 'transparent',
         }}
-      />
-    ),
+      />,
     name: 'cry',
   },
 ];
@@ -156,8 +151,8 @@ export default class DiaryEntryForm extends React.Component {
             <ImageField
               imageUrl={
                 this.props.diaryEntryForm.image1 &&
-                  (this.props.diaryEntryForm.image1.uri ||
-                    this.props.diaryEntryForm.image1.defaultUri)
+                (this.props.diaryEntryForm.image1.uri ||
+                  this.props.diaryEntryForm.image1.defaultUri)
               }
               onDelete={this.props.actions.deleteImage1}
               onChange={this.props.actions.handleChangeImage1}
@@ -165,8 +160,8 @@ export default class DiaryEntryForm extends React.Component {
             <ImageField
               imageUrl={
                 this.props.diaryEntryForm.image2 &&
-                  (this.props.diaryEntryForm.image2.uri ||
-                    this.props.diaryEntryForm.image2.defaultUri)
+                (this.props.diaryEntryForm.image2.uri ||
+                  this.props.diaryEntryForm.image2.defaultUri)
               }
               onDelete={this.props.actions.deleteImage2}
               onChange={this.props.actions.handleChangeImage2}
@@ -174,8 +169,8 @@ export default class DiaryEntryForm extends React.Component {
             <ImageField
               imageUrl={
                 this.props.diaryEntryForm.image3 &&
-                  (this.props.diaryEntryForm.image3.uri ||
-                    this.props.diaryEntryForm.image3.defaultUri)
+                (this.props.diaryEntryForm.image3.uri ||
+                  this.props.diaryEntryForm.image3.defaultUri)
               }
               onDelete={this.props.actions.deleteImage3}
               onChange={this.props.actions.handleChangeImage3}

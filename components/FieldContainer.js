@@ -23,7 +23,9 @@ export default class FieldContainer extends React.Component {
     return (
       <View style={[styles.labelContainer, containerStyle]}>
         <View style={styles.label}>
-          <Text style={styles.labelText}>{label}</Text>
+          <Text style={styles.labelText}>
+            {label}
+          </Text>
         </View>
         {this.props.children}
       </View>

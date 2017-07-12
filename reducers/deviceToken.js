@@ -6,7 +6,7 @@ export type DeviceTokenState = string | null;
 // reducer
 export default (
   state: DeviceTokenState = null,
-  action: Actions.SetDeviceTokenAction
+  action: Actions.SetDeviceTokenAction,
 ) => {
   switch (action.type) {
     case Actions.SET_DEVICE_TOKEN:

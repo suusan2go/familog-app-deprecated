@@ -11,9 +11,7 @@ import ReactNative, {
   ScrollView,
 } from 'react-native';
 import { Icon, Avatar, Button } from 'react-native-elements';
-import {
-  KeyboardAwareScrollView,
-} from 'react-native-keyboard-aware-scrollview';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import headerStyle from './headerStyle.js';
 import FieldContainer from './FieldContainer';
 import ProfileHeaderRight from './ProfileHeaderRight';
@@ -46,9 +44,8 @@ export default class Profile extends Component {
     title: '',
     headerStyle: headerStyle.container,
     headerTintColor: 'mediumseagreen',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="account" type="material-community" color={tintColor} />
-    ),
+    tabBarIcon: ({ tintColor }) =>
+      <Icon name="account" type="material-community" color={tintColor} />,
     headerLeft: (
       <Icon
         name="times"

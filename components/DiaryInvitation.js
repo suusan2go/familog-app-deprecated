@@ -41,7 +41,9 @@ export default class DiaryInvitation extends React.Component {
           activeOpacity={0.8}
         >
           <View style={styles.copyArea}>
-            <Text style={styles.codeWrapper}>{this.props.invitationCode}</Text>
+            <Text style={styles.codeWrapper}>
+              {this.props.invitationCode}
+            </Text>
             <Text style={styles.copy}>招待コードをコピーする</Text>
           </View>
         </TouchableHighlight>

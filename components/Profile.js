@@ -17,9 +17,8 @@ export default class Profile extends Component {
     title: 'プロフィール',
     headerStyle: headerStyle.container,
     headerTintColor: 'mediumseagreen',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="account" type="material-community" color={tintColor} />
-    ),
+    tabBarIcon: ({ tintColor }) =>
+      <Icon name="account" type="material-community" color={tintColor} />,
     headerRight: (
       <ProfileHeaderRight
         isVisible={screenProps.showInvitation}

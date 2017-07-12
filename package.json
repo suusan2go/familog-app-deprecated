@@ -13,6 +13,8 @@
     "flow-typed": "^2.1.2",
     "jest-expo": "^18.0.0",
     "prettier": "^1.5.2",
+    "prettier-eslint": "^6.4.2",
+    "prettier-eslint-cli": "^4.1.1",
     "react-native-scripts": "0.0.40",
     "react-test-renderer": "~15.6.1"
   },

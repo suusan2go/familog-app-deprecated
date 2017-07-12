@@ -44,15 +44,15 @@ const DiaryEntryImages = ({
         alignItems: 'center',
       }}
     >
-      {images.map(image => (
+      {images.map(image =>
         <View style={styles.slide} key={image.id}>
           <Image
             resizeMode="cover"
             source={{ uri: image.uri }}
             style={{ flex: 1, width: Dimensions.get('window').width }}
           />
-        </View>
-      ))}
+        </View>,
+      )}
     </Swiper>
   );
 };

@@ -13,9 +13,8 @@ export type DiaryInvitationActions = {
 
 export default connect(
   (store: ReduxState) => ({
-    invitationCode: store.currentDiary !== null
-      ? store.currentDiary.invitationCode
-      : null,
+    invitationCode:
+      store.currentDiary !== null ? store.currentDiary.invitationCode : null,
   }),
   (dispatch: Dispatch): { actions: DiaryInvitationActions } => ({
     actions: {

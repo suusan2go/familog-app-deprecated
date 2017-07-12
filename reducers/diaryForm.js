@@ -17,7 +17,7 @@ export default (
   action:
     | CreateDiaryStartAction
     | CreateDiarySuccessAction
-    | CreateDiaryFailureAction
+    | CreateDiaryFailureAction,
 ) => {
   switch (action.type) {
     case Actions.CREATE_DIARY_START:

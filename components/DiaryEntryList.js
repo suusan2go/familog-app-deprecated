@@ -39,13 +39,12 @@ class DiaryEntryList extends Component {
     headerRight: (
       <DiaryEntryListHeaderRight isVisible={screenProps.showInvitation} />
     ),
-    tabBarIcon: ({ tintColor }) => (
+    tabBarIcon: ({ tintColor }) =>
       <Icon
         name="book-open-page-variant"
         type="material-community"
         color={tintColor}
-      />
-    ),
+      />,
   });
 
   constructor() {
@@ -72,12 +71,11 @@ class DiaryEntryList extends Component {
     }: {
       item: DiaryEntryState,
       index: number,
-    }) => (
+    }) =>
       <DiaryEntryListItem
         diaryEntry={item}
         navigation={this.props.navigation}
-      />
-    );
+      />;
     return (
       <View
         style={{
