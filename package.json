@@ -16,7 +16,7 @@
     "prettier-eslint": "^6.4.2",
     "prettier-eslint-cli": "^4.1.1",
     "react-native-scripts": "0.0.40",
-    "react-test-renderer": "~15.6.1"
+    "react-test-renderer": "16.0.0-alpha.12"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -40,8 +40,8 @@
     "node-emoji": "^1.6.1",
     "node-uuid": "^1.4.8",
     "qs": "^6.5.0",
-    "react": "16.0.0-alpha.6",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-16.0.0.tar.gz",
+    "react": "16.0.0-alpha.12",
+    "react-native": "^0.45.0",
     "react-native-elements": "^0.13.0",
     "react-native-keyboard-aware-scroll-view": "^0.2.9",
     "react-native-keyboard-aware-scrollview": "^1.1.6",
