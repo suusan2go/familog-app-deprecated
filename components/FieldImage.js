@@ -12,7 +12,7 @@ export default class FieldImage extends React.Component {
       name: string,
       type: string,
     }) => void,
-    onDelete: () => void,
+    onDelete: () => Promise<any>,
   };
 
   imageUrl() {

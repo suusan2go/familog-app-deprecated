@@ -23,44 +23,50 @@ import type { DiaryEntryFormState } from '../reducers/diaryEntryForm';
 import type { DiaryEntryFormActions } from '../containers/DiaryEntryForm';
 import type { DiaryEntryPathParams } from './DiaryEntryListItem';
 
+const smile = () =>
+  <Image
+    source={require('@moqada/rn-twemoji/n/smile')}
+    style={{
+      height: 25,
+      width: 25,
+      marginRight: 10,
+      backgroundColor: 'transparent',
+    }}
+  />;
+
+const cry = () =>
+  <Image
+    source={require('@moqada/rn-twemoji/n/cry')}
+    style={{
+      height: 25,
+      width: 25,
+      marginRight: 10,
+      backgroundColor: 'transparent',
+    }}
+  />;
+
+const tired = () =>
+  <Image
+    source={require('@moqada/rn-twemoji/n/tired_face')}
+    style={{
+      height: 25,
+      width: 25,
+      marginRight: 10,
+      backgroundColor: 'transparent',
+    }}
+  />;
+
 const buttons = [
   {
-    element: () =>
-      <Image
-        source={require('@moqada/rn-twemoji/n/smile')}
-        style={{
-          height: 25,
-          width: 25,
-          marginRight: 10,
-          backgroundColor: 'transparent',
-        }}
-      />,
+    element: smile,
     name: 'smile',
   },
   {
-    element: () =>
-      <Image
-        source={require('@moqada/rn-twemoji/n/tired_face')}
-        style={{
-          height: 25,
-          width: 25,
-          marginRight: 10,
-          backgroundColor: 'transparent',
-        }}
-      />,
+    element: tired,
     name: 'tired_face',
   },
   {
-    element: () =>
-      <Image
-        source={require('@moqada/rn-twemoji/n/cry')}
-        style={{
-          height: 25,
-          width: 25,
-          marginRight: 10,
-          backgroundColor: 'transparent',
-        }}
-      />,
+    element: cry,
     name: 'cry',
   },
 ];
